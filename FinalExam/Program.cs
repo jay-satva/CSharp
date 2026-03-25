@@ -62,7 +62,6 @@ app.UseRouting();
 // Custom middleware for token auto-refresh
 app.UseMiddleware<RefreshMiddleware>();
 
-app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();

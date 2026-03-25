@@ -23,12 +23,15 @@ public class UserRepository
     public async Task<AppUser?> GetByEmailAsync(string email) =>
         await _users.Find(u => u.Email == email.Trim().ToLowerInvariant()).FirstOrDefaultAsync();
 
+    public async Task<AppUser?> GetByIntuitSubAsync(string intuitSub) =>
+        await _users.Find(u => u.IntuitSub == intuitSub).FirstOrDefaultAsync();
+
     public async Task<AppUser?> GetByUserIdAsync(string userId) =>
         await _users.Find(u => u.UserId == userId).FirstOrDefaultAsync();
 
     public async Task CreateAsync(AppUser user)
     {
-        user.Email = user.Email.Trim().ToLowerInvariant();
+        user.Email = NormalizeEmail(user.Email);
         user.UserId = EnsureUserId(user.UserId);
         await _users.InsertOneAsync(user);
     }
@@ -40,7 +43,8 @@ public class UserRepository
     }
 
     public async Task<AppUser> UpsertQuickBooksTokensAsync(
-        string email,
+        string? intuitSub,
+        string? email,
         string? name,
         string accessToken,
         string refreshToken,
@@ -49,22 +53,35 @@ public class UserRepository
         DateTime accessTokenExpiry,
         DateTime refreshTokenExpiry)
     {
-        var normalizedEmail = email.Trim().ToLowerInvariant();
-        var existing = await GetByEmailAsync(normalizedEmail);
+        var normalizedEmail = NormalizeEmail(email);
+        AppUser? existing = null;
+
+        if (!string.IsNullOrWhiteSpace(intuitSub))
+            existing = await GetByIntuitSubAsync(intuitSub);
+
+        if (existing == null && !string.IsNullOrWhiteSpace(normalizedEmail))
+            existing = await GetByEmailAsync(normalizedEmail);
 
         if (existing == null)
         {
             existing = new AppUser
             {
                 UserId = Guid.NewGuid().ToString(),
+                IntuitSub = string.IsNullOrWhiteSpace(intuitSub) ? null : intuitSub,
                 Email = normalizedEmail,
-                Name = string.IsNullOrWhiteSpace(name) ? normalizedEmail : name.Trim(),
+                Name = string.IsNullOrWhiteSpace(name)
+                    ? (!string.IsNullOrWhiteSpace(normalizedEmail) ? normalizedEmail : "Intuit User")
+                    : name.Trim(),
                 PasswordHash = null,
                 CreatedAt = DateTime.UtcNow
             };
         }
 
         existing.UserId = EnsureUserId(existing.UserId);
+        if (!string.IsNullOrWhiteSpace(intuitSub))
+            existing.IntuitSub = intuitSub;
+        if (!string.IsNullOrWhiteSpace(normalizedEmail))
+            existing.Email = normalizedEmail;
         existing.AccessToken = accessToken;
         existing.RefreshToken = refreshToken;
         existing.IdToken = idToken;
@@ -102,15 +119,35 @@ public class UserRepository
     private void EnsureIndexes()
     {
         var existingIndexes = _users.Indexes.List().ToList();
-        var hasLegacyUserIdIndex = existingIndexes.Any(index =>
-            index.TryGetValue("name", out var name) && name == "UserId_1");
+        var existingIndexNames = existingIndexes
+            .Select(index => index.GetValue("name", BsonNull.Value))
+            .Where(name => !name.IsBsonNull && name.IsString)
+            .Select(name => name.AsString)
+            .ToHashSet(StringComparer.Ordinal);
 
-        if (hasLegacyUserIdIndex)
-            _users.Indexes.DropOne("UserId_1");
+        DropIndexIfExists(existingIndexNames, "UserId_1");
+        DropIndexIfExists(existingIndexNames, "Email_1");
+        DropIndexIfExists(existingIndexNames, "IntuitSub_1");
 
         var emailIndexModel = new CreateIndexModel<AppUser>(
             Builders<AppUser>.IndexKeys.Ascending(u => u.Email),
-            new CreateIndexOptions { Unique = true, Name = "Email_1" });
+            new CreateIndexOptions<AppUser>
+            {
+                Unique = true,
+                Name = "Email_1",
+                PartialFilterExpression = new BsonDocument
+                {
+                    {
+                        "Email",
+                        new BsonDocument
+                        {
+                            { "$exists", true },
+                            { "$type", "string" },
+                            { "$gt", "" }
+                        }
+                    }
+                }
+            });
 
         var userIdIndexModel = new CreateIndexModel<AppUser>(
             Builders<AppUser>.IndexKeys.Ascending(u => u.UserId),
@@ -132,10 +169,48 @@ public class UserRepository
                 }
             });
 
+        var intuitSubIndexModel = new CreateIndexModel<AppUser>(
+            Builders<AppUser>.IndexKeys.Ascending(u => u.IntuitSub),
+            new CreateIndexOptions<AppUser>
+            {
+                Unique = true,
+                Name = "IntuitSub_1",
+                PartialFilterExpression = new BsonDocument
+                {
+                    {
+                        "IntuitSub",
+                        new BsonDocument
+                        {
+                            { "$exists", true },
+                            { "$type", "string" },
+                            { "$gt", "" }
+                        }
+                    }
+                }
+            });
+
         _users.Indexes.CreateOne(emailIndexModel);
         _users.Indexes.CreateOne(userIdIndexModel);
+        _users.Indexes.CreateOne(intuitSubIndexModel);
+    }
+
+    private void DropIndexIfExists(HashSet<string> existingIndexNames, string indexName)
+    {
+        if (!existingIndexNames.Contains(indexName))
+            return;
+
+        try
+        {
+            _users.Indexes.DropOne(indexName);
+        }
+        catch (MongoCommandException ex) when (ex.Message.Contains("index not found", StringComparison.OrdinalIgnoreCase))
+        {
+        }
     }
 
     private static string EnsureUserId(string? userId) =>
         string.IsNullOrWhiteSpace(userId) ? Guid.NewGuid().ToString() : userId;
+
+    private static string? NormalizeEmail(string? email) =>
+        string.IsNullOrWhiteSpace(email) ? null : email.Trim().ToLowerInvariant();
 }

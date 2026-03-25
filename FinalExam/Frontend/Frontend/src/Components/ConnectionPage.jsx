@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 
-const API_BASE = "https://localhost:7142";
+const API_BASE = "http://localhost:5130";
 
 const ConnectionPage = () => {
   const location = useLocation();

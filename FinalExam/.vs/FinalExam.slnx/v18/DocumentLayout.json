@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Jay\\CSharp\\FinalExam\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\data\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:data\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\middlewares\\refreshmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:middlewares\\refreshmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\middlewares\\refreshmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:middlewares\\refreshmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{911524FC-8925-4BCD-84CE-6B62E8064DE7}|..\\QuickBooksServices\\QuickBooksServices.csproj|c:\\jay\\csharp\\quickbooksservices\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
@@ -20,10 +24,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\data\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:data\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -65,7 +65,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
@@ -78,21 +78,7 @@
               "ViewState": "AgIAAAgAAAAAAAAAAAAQwBEAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-25T12:18:28.789Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\QuickBooksServices\\Class1.cs",
-              "RelativeDocumentMoniker": "..\\QuickBooksServices\\Class1.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\QuickBooksServices\\Class1.cs",
-              "RelativeToolTip": "..\\QuickBooksServices\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T12:43:49.302Z",
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
@@ -102,27 +88,27 @@
               "RelativeDocumentMoniker": "appsettings.json",
               "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\appsettings.json",
               "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-03-24T07:10:55.357Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAAAAQAAAAbAAAAAAAAAA==",
+              "ViewState": "AgIAACIAAAAAAAAAAAAgwEAAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-24T06:32:01.117Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
@@ -130,12 +116,11 @@
               "RelativeToolTip": "Controllers\\AuthController.cs",
               "ViewState": "AgIAAMcAAAAAAAAAAAAEwMcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T06:46:01.539Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T06:46:01.539Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "RefreshMiddleware.cs",
               "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Middlewares\\RefreshMiddleware.cs",
               "RelativeDocumentMoniker": "Middlewares\\RefreshMiddleware.cs",
@@ -143,8 +128,32 @@
               "RelativeToolTip": "Middlewares\\RefreshMiddleware.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T09:17:21.721Z",
+              "WhenOpened": "2026-03-24T09:17:21.721Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Data\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Data\\UserRepository.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Data\\UserRepository.cs",
+              "RelativeToolTip": "Data\\UserRepository.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAApwIIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T11:22:04.004Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\QuickBooksServices\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\QuickBooksServices\\Class1.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\QuickBooksServices\\Class1.cs",
+              "RelativeToolTip": "..\\QuickBooksServices\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T12:43:49.302Z"
             },
             {
               "$type": "Document",
@@ -156,21 +165,7 @@
               "RelativeToolTip": "FinalExam.http",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-03-24T10:18:37.393Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Data\\UserRepository.cs",
-              "RelativeDocumentMoniker": "Data\\UserRepository.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Data\\UserRepository.cs",
-              "RelativeToolTip": "Data\\UserRepository.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAIwBQAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T11:22:04.004Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T10:18:37.393Z"
             },
             {
               "$type": "Document",
@@ -182,8 +177,7 @@
               "RelativeToolTip": "DTOs\\TokenDtos.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAiwA8AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T04:25:29.88Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-25T04:25:29.88Z"
             },
             {
               "$type": "Document",
@@ -195,8 +189,7 @@
               "RelativeToolTip": "Services\\QuickBooksService.cs",
               "ViewState": "AgIAAAoAAAAAAAAAAIA5wBoAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:05:16.732Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T07:05:16.732Z"
             },
             {
               "$type": "Document",
@@ -208,8 +201,7 @@
               "RelativeToolTip": "Data\\MongoDbContext.cs",
               "ViewState": "AgIAAAUAAAAAAAAAAAAxwBcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:05:42.882Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T07:05:42.882Z"
             },
             {
               "$type": "Document",
@@ -221,8 +213,7 @@
               "RelativeToolTip": "Settings\\MongoDbSettings.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:07:07.55Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T07:07:07.55Z"
             },
             {
               "$type": "Document",
@@ -234,8 +225,7 @@
               "RelativeToolTip": "Models\\QuickBooksToken.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAqwA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:13:00.599Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T07:13:00.599Z"
             },
             {
               "$type": "Document",
@@ -247,8 +237,7 @@
               "RelativeToolTip": "Models\\TokenResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:13:11.866Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T07:13:11.866Z"
             }
           ]
         }

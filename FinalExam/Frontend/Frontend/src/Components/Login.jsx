@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const API_BASE = 'http://localhost:5130';
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -7,7 +9,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
 
   const handleIntuitLogin = () => {
-    window.location.href = 'https://localhost:7142/auth/sso/connect';
+    window.location.href = `${API_BASE}/auth/sso/connect`;
   };
 
   const handleManualLogin = async (e) => {
@@ -21,7 +23,7 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const res = await fetch('https://localhost:7142/auth/login', {
+      const res = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

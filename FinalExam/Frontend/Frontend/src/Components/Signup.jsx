@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 
+const API_BASE = 'http://localhost:5130';
+
 const Signup = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
   const handleIntuitSignup = () => {
-    window.location.href = 'https://localhost:7142/auth/sso/connect';
+    window.location.href = `${API_BASE}/auth/sso/connect`;
   };
 
   const handleChange = (e) => {
@@ -34,7 +36,7 @@ const Signup = () => {
 
     setLoading(true);
     try {
-      const res = await fetch('https://localhost:7142/auth/register', {
+      const res = await fetch(`${API_BASE}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',

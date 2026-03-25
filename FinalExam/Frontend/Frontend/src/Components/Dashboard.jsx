@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-const API_BASE = "https://localhost:7142";
+const API_BASE = "http://localhost:5130";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -16,6 +16,8 @@ const Dashboard = () => {
   const [error, setError] = useState("");
 
   const activeCompanies = companies.filter((company) => company.isActive ?? company.IsActive);
+  const displayName = user?.name || user?.Name || "Intuit User";
+  const displayEmail = user?.email || user?.Email || user?.intuitSub || user?.IntuitSub || "No email available";
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -563,8 +565,8 @@ const Dashboard = () => {
 
                 <div className="topbar-actions">
                   <div className="topbar-user">
-                    <strong>{user?.name || user?.Name || "User"}</strong>
-                    <span>{user?.email || user?.Email || "No email found"}</span>
+                    <strong>{displayName}</strong>
+                    <span>{displayEmail}</span>
                   </div>
                   <button type="button" className="btn-ghost" onClick={handleLogout}>
                     Sign Out

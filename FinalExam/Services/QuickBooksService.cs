@@ -97,10 +97,12 @@ namespace FinalExam.Services
 
             string? resolvedEmail = null;
             string? resolvedName = userNameFallbackForMissingIdToken;
+            string? subject = null;
             if (!string.IsNullOrWhiteSpace(tokenResponse.id_token))
             {
                 var handler = new JwtSecurityTokenHandler();
                 var jwtToken = handler.ReadJwtToken(tokenResponse.id_token);
+                subject = jwtToken.Subject;
                 var emailClaim = jwtToken.Claims.FirstOrDefault(
                     c => string.Equals(c.Type, "email", StringComparison.OrdinalIgnoreCase));
                 resolvedEmail = emailClaim?.Value;
@@ -109,11 +111,20 @@ namespace FinalExam.Services
                     c => string.Equals(c.Type, "name", StringComparison.OrdinalIgnoreCase));
                 resolvedName = nameClaim?.Value ?? resolvedName;
             }
-            resolvedEmail ??= userEmailFallbackForMissingIdToken;
+
             if (string.IsNullOrWhiteSpace(resolvedEmail))
-                throw new Exception("Could not resolve the QuickBooks email for this user.");
+            {
+                var userInfo = await GetUserInfoAsync(tokenResponse.access_token);
+                resolvedEmail = userInfo?.email ?? resolvedEmail;
+                resolvedName = userInfo?.name ?? resolvedName;
+            }
+
+            resolvedEmail ??= userEmailFallbackForMissingIdToken;
+            if (string.IsNullOrWhiteSpace(resolvedEmail) && string.IsNullOrWhiteSpace(subject))
+                throw new Exception("Could not resolve the Intuit user identity.");
 
             var user = await _userRepository.UpsertQuickBooksTokensAsync(
+                intuitSub: subject,
                 email: resolvedEmail,
                 name: resolvedName,
                 accessToken: tokenResponse.access_token,
@@ -127,6 +138,23 @@ namespace FinalExam.Services
                 await SyncCompanyInfoAsync(user.UserId, realmId, tokenResponse.access_token);
 
             return (tokenResponse, user);
+        }
+
+        private async Task<UserInfoDto?> GetUserInfoAsync(string accessToken)
+        {
+            var request = new HttpRequestMessage(
+                HttpMethod.Get,
+                "https://accounts.platform.intuit.com/v1/openid_connect/userinfo");
+
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+            request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var response = await _httpClient.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+                return null;
+
+            var json = await response.Content.ReadAsStringAsync();
+            return JsonSerializer.Deserialize<UserInfoDto>(json);
         }
 
         private async Task SyncCompanyInfoAsync(string userId, string realmId, string accessToken)

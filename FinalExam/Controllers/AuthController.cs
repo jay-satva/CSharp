@@ -65,7 +65,7 @@ public class AuthController : ControllerBase
 
         HttpContext.Session.SetString("authType", "manual");
         HttpContext.Session.SetString("userId", user.UserId);
-        HttpContext.Session.SetString("email", user.Email);
+        SetOptionalSessionString("email", user.Email);
 
         return Ok(new { message = "Logged in.", userId = user.UserId });
     }
@@ -107,7 +107,7 @@ public class AuthController : ControllerBase
                 syncCompanyInfo: false);
 
             HttpContext.Session.SetString("userId", user.UserId);
-            HttpContext.Session.SetString("email", user.Email);
+            SetOptionalSessionString("email", user.Email);
             HttpContext.Session.SetString("authType", "intuit");
 
             return Redirect("http://localhost:5173/dashboard?status=success");
@@ -163,7 +163,7 @@ public class AuthController : ControllerBase
                 syncCompanyInfo: true);
 
             HttpContext.Session.SetString("userId", user.UserId);
-            HttpContext.Session.SetString("email", user.Email);
+            SetOptionalSessionString("email", user.Email);
             HttpContext.Session.SetString("authType", "intuit");
             return Redirect("http://localhost:5173/dashboard?status=connected");
         }
@@ -185,7 +185,8 @@ public class AuthController : ControllerBase
         {
             UserId = userId,
             Email = user?.Email,
-            Name = user?.Name
+            Name = user?.Name,
+            IntuitSub = user?.IntuitSub
         });
     }
 
@@ -227,5 +228,16 @@ public class AuthController : ControllerBase
     {
         HttpContext.Session.Clear();
         return Ok(new { message = "Logged out." });
+    }
+
+    private void SetOptionalSessionString(string key, string? value)
+    {
+        if (string.IsNullOrWhiteSpace(value))
+        {
+            HttpContext.Session.Remove(key);
+            return;
+        }
+
+        HttpContext.Session.SetString(key, value);
     }
 }

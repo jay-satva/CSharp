@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Jay\\C#\\CollectionsPractice\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A3237BA6-65D3-23E6-6C5C-F7EE63BAAEA8}|CollectionsPractice.csproj|c:\\jay\\c#\\collectionspractice\\model\\practical2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3237BA6-65D3-23E6-6C5C-F7EE63BAAEA8}|CollectionsPractice.csproj|solutionrelative:model\\practical2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3237BA6-65D3-23E6-6C5C-F7EE63BAAEA8}|CollectionsPractice.csproj|c:\\jay\\c#\\collectionspractice\\model\\practical1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3237BA6-65D3-23E6-6C5C-F7EE63BAAEA8}|CollectionsPractice.csproj|solutionrelative:model\\practical1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A3237BA6-65D3-23E6-6C5C-F7EE63BAAEA8}|CollectionsPractice.csproj|c:\\jay\\c#\\collectionspractice\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A3237BA6-65D3-23E6-6C5C-F7EE63BAAEA8}|CollectionsPractice.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Jay\\C#\\CollectionsPractice\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Jay\\C#\\CollectionsPractice\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T09:31:27.075Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Practical2.cs",
+              "DocumentMoniker": "C:\\Jay\\C#\\CollectionsPractice\\Model\\Practical2.cs",
+              "RelativeDocumentMoniker": "Model\\Practical2.cs",
+              "ToolTip": "C:\\Jay\\C#\\CollectionsPractice\\Model\\Practical2.cs",
+              "RelativeToolTip": "Model\\Practical2.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAgwCoAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T09:52:01.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Practical1.cs",
+              "DocumentMoniker": "C:\\Jay\\C#\\CollectionsPractice\\Model\\Practical1.cs",
+              "RelativeDocumentMoniker": "Model\\Practical1.cs",
+              "ToolTip": "C:\\Jay\\C#\\CollectionsPractice\\Model\\Practical1.cs",
+              "RelativeToolTip": "Model\\Practical1.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T09:48:21.844Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

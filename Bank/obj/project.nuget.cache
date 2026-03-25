@@ -1,0 +1,17 @@
+{
+  "version": 2,
+  "dgSpecHash": "nCQuls7P7YI=",
+  "success": true,
+  "projectFilePath": "C:\\Jay\\C#\\Bank\\Bank.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ASmin\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\system.configuration.configurationmanager\\10.0.4\\system.configuration.configurationmanager.10.0.4.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.4\\system.diagnostics.eventlog.10.0.4.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\system.security.cryptography.protecteddata\\10.0.4\\system.security.cryptography.protecteddata.10.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

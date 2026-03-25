@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../QuickBooksServices/QuickBooksServices.csproj" Id="911524fc-8925-4bcd-84ce-6b62e8064de7" />
+  <Project Path="FinalExam.csproj" />
+</Solution>

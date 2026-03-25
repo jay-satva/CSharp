@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "boD87h/OYBw=",
+  "success": true,
+  "projectFilePath": "C:\\Jay\\C#\\SecureEMS\\SecureEMS.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ASmin\\.nuget\\packages\\system.configuration.configurationmanager\\10.0.4\\system.configuration.configurationmanager.10.0.4.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.4\\system.diagnostics.eventlog.10.0.4.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\system.security.cryptography.protecteddata\\10.0.4\\system.security.cryptography.protecteddata.10.0.4.nupkg.sha512"
+  ],
+  "logs": []
+}

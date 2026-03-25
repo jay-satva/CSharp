@@ -1,0 +1,22 @@
+[
+  {
+    "Id": 1,
+    "FirstName": "Abc",
+    "LastName": "Def",
+    "Email": "abckjnkljklj",
+    "PhoneNumber": "89",
+    "Gender": 0,
+    "Designation": 5,
+    "Salary": 10000
+  },
+  {
+    "Id": 2,
+    "FirstName": "Jay",
+    "LastName": "M",
+    "Email": "jay@gmail.com",
+    "PhoneNumber": "1234567890",
+    "Gender": 0,
+    "Designation": 3,
+    "Salary": 50000
+  }
+]

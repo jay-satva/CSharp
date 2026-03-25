@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "FirstName": "Jay",
+    "LastName": "M",
+    "Department": "Computer",
+    "RollNo": "123",
+    "Semester": 8,
+    "DOB": "22102004",
+    "Age": 2122,
+    "Contact": "1234567890",
+    "Address": "Rajkot"
+  },
+  {
+    "Id": 2,
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Department": "IT",
+    "RollNo": "124",
+    "Semester": 7,
+    "DOB": "11112011",
+    "Age": 21,
+    "Contact": "0987654321",
+    "Address": "London"
+  }
+]

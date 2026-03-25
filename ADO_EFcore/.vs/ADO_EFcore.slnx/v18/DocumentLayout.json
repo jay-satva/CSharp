@@ -1,0 +1,445 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Jay\\CSharp\\ADO_EFcore\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\services\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:services\\userservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\ado_efcore.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:ado_efcore.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:repository\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\repository\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:repository\\itemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:models\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\models\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:models\\items.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\actionfilter\\validatemodelstatefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:actionfilter\\validatemodelstatefilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\actionfilter\\loggingactionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:actionfilter\\loggingactionfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:dto\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\repository\\iitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:repository\\iitemrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\services\\itemservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:services\\itemservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\dto\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:dto\\itemdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\models\\registerreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:models\\registerreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\repository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:repository\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:controllers\\itemcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:models\\users.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\models\\loginreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:models\\loginreq.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\models\\jwtoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:models\\jwtoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|c:\\jay\\csharp\\ado_efcore\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{92A16B82-8823-A1B2-96BD-F30A6DF6462B}|ADO_EFcore.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ItemRepository.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Repository\\ItemRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\ItemRepository.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Repository\\ItemRepository.cs",
+              "RelativeToolTip": "Repository\\ItemRepository.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAwwDUAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T09:43:32.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Repository\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\UserRepository.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Repository\\UserRepository.cs",
+              "RelativeToolTip": "Repository\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T09:27:52.11Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-18T08:47:49.428Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ADO_EFcore.csproj",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\ADO_EFcore.csproj",
+              "RelativeDocumentMoniker": "ADO_EFcore.csproj",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\ADO_EFcore.csproj",
+              "RelativeToolTip": "ADO_EFcore.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-18T06:45:41.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "UserController.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UserController.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Controllers\\UserController.cs",
+              "RelativeToolTip": "Controllers\\UserController.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAqwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T08:44:40.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserServices.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Services\\UserServices.cs",
+              "RelativeDocumentMoniker": "Services\\UserServices.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Services\\UserServices.cs",
+              "RelativeToolTip": "Services\\UserServices.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAmwDAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T06:59:25.175Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Items.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\Items.cs",
+              "RelativeDocumentMoniker": "Models\\Items.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\Items.cs",
+              "RelativeToolTip": "Models\\Items.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T06:51:55.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Models\\AppDbContext.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\AppDbContext.cs",
+              "RelativeToolTip": "Models\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T09:23:58.713Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAAAFUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T08:48:28.865Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ExceptionMiddleware.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Middleware\\ExceptionMiddleware.cs",
+              "RelativeDocumentMoniker": "Middleware\\ExceptionMiddleware.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Middleware\\ExceptionMiddleware.cs",
+              "RelativeToolTip": "Middleware\\ExceptionMiddleware.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T09:55:35.607Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T06:58:53.284Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ValidateModelStateFilter.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\ActionFilter\\ValidateModelStateFilter.cs",
+              "RelativeDocumentMoniker": "ActionFilter\\ValidateModelStateFilter.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\ActionFilter\\ValidateModelStateFilter.cs",
+              "RelativeToolTip": "ActionFilter\\ValidateModelStateFilter.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA1wBYAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T09:56:50.193Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "LoggingActionFilter.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\ActionFilter\\LoggingActionFilter.cs",
+              "RelativeDocumentMoniker": "ActionFilter\\LoggingActionFilter.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\ActionFilter\\LoggingActionFilter.cs",
+              "RelativeToolTip": "ActionFilter\\LoggingActionFilter.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T09:56:33.693Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "UserDto.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Dto\\UserDto.cs",
+              "RelativeDocumentMoniker": "Dto\\UserDto.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Dto\\UserDto.cs",
+              "RelativeToolTip": "Dto\\UserDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T07:01:52.238Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IItemRepository.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Repository\\IItemRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\IItemRepository.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Repository\\IItemRepository.cs",
+              "RelativeToolTip": "Repository\\IItemRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T09:42:41.229Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "ItemServices.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Services\\ItemServices.cs",
+              "RelativeDocumentMoniker": "Services\\ItemServices.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Services\\ItemServices.cs",
+              "RelativeToolTip": "Services\\ItemServices.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBMAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T06:59:35.765Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "ItemDto.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Dto\\ItemDto.cs",
+              "RelativeDocumentMoniker": "Dto\\ItemDto.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Dto\\ItemDto.cs",
+              "RelativeToolTip": "Dto\\ItemDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T07:02:04.697Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RegisterReq.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\RegisterReq.cs",
+              "RelativeDocumentMoniker": "Models\\RegisterReq.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\RegisterReq.cs",
+              "RelativeToolTip": "Models\\RegisterReq.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAA1wAUAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T06:54:15.695Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Repository\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\IUserRepository.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Repository\\IUserRepository.cs",
+              "RelativeToolTip": "Repository\\IUserRepository.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAuwAgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T09:25:37.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "ItemController.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Controllers\\ItemController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ItemController.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Controllers\\ItemController.cs",
+              "RelativeToolTip": "Controllers\\ItemController.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAmwAkAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T08:45:42.626Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "Services\\JwtService.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Services\\JwtService.cs",
+              "RelativeToolTip": "Services\\JwtService.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowB0AAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T06:55:40.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "Users.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\Users.cs",
+              "RelativeDocumentMoniker": "Models\\Users.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\Users.cs",
+              "RelativeToolTip": "Models\\Users.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAwwAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T06:51:49.062Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-18T10:22:53.239Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "LoginReq.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\LoginReq.cs",
+              "RelativeDocumentMoniker": "Models\\LoginReq.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\LoginReq.cs",
+              "RelativeToolTip": "Models\\LoginReq.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T06:53:26.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "JwtOptions.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\JwtOptions.cs",
+              "RelativeDocumentMoniker": "Models\\JwtOptions.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\Models\\JwtOptions.cs",
+              "RelativeToolTip": "Models\\JwtOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T06:53:08.691Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\ADO_EFcore\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "C:\\Jay\\CSharp\\ADO_EFcore\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-18T09:20:19.352Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

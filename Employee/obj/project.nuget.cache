@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "8/yaNIF5nvA=",
+  "success": true,
+  "projectFilePath": "C:\\Jay\\C#\\Employee\\Employee.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ASmin\\.nuget\\packages\\system.configuration.configurationmanager\\10.0.3\\system.configuration.configurationmanager.10.0.3.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\system.diagnostics.eventlog\\10.0.3\\system.diagnostics.eventlog.10.0.3.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\system.security.cryptography.protecteddata\\10.0.3\\system.security.cryptography.protecteddata.10.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

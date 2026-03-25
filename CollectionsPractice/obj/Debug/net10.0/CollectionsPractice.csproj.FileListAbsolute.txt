@@ -1,0 +1,14 @@
+C:\Jay\C#\CollectionsPractice\bin\Debug\net10.0\CollectionsPractice.exe
+C:\Jay\C#\CollectionsPractice\bin\Debug\net10.0\CollectionsPractice.deps.json
+C:\Jay\C#\CollectionsPractice\bin\Debug\net10.0\CollectionsPractice.runtimeconfig.json
+C:\Jay\C#\CollectionsPractice\bin\Debug\net10.0\CollectionsPractice.dll
+C:\Jay\C#\CollectionsPractice\bin\Debug\net10.0\CollectionsPractice.pdb
+C:\Jay\C#\CollectionsPractice\obj\Debug\net10.0\CollectionsPractice.GeneratedMSBuildEditorConfig.editorconfig
+C:\Jay\C#\CollectionsPractice\obj\Debug\net10.0\CollectionsPractice.AssemblyInfoInputs.cache
+C:\Jay\C#\CollectionsPractice\obj\Debug\net10.0\CollectionsPractice.AssemblyInfo.cs
+C:\Jay\C#\CollectionsPractice\obj\Debug\net10.0\CollectionsPractice.csproj.CoreCompileInputs.cache
+C:\Jay\C#\CollectionsPractice\obj\Debug\net10.0\CollectionsPractice.dll
+C:\Jay\C#\CollectionsPractice\obj\Debug\net10.0\refint\CollectionsPractice.dll
+C:\Jay\C#\CollectionsPractice\obj\Debug\net10.0\CollectionsPractice.pdb
+C:\Jay\C#\CollectionsPractice\obj\Debug\net10.0\CollectionsPractice.genruntimeconfig.cache
+C:\Jay\C#\CollectionsPractice\obj\Debug\net10.0\ref\CollectionsPractice.dll

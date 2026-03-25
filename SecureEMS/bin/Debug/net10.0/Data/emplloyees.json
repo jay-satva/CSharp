@@ -1,0 +1,20 @@
+[
+  {
+    "Id": "df9fccb5-ae67-4d65-8617-5764b803386a",
+    "FirstName": "John",
+    "LastName": "Doe",
+    "Email": "john@gmail.com",
+    "Phone": "0987654321",
+    "Salary": 30000,
+    "Password": "lmyKfOe0ScbKnU48CuNeIg=="
+  },
+  {
+    "Id": "762faa6c-4ea2-458b-a0c3-6180015ca0be",
+    "FirstName": "Abc",
+    "LastName": "Def",
+    "Email": "abc@gmail.com",
+    "Phone": "0987654321",
+    "Salary": 30000,
+    "Password": "bDCIpirwyAF9L530DPQ44A=="
+  }
+]

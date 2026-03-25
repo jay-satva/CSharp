@@ -1,0 +1,14 @@
+C:\Jay\C#\Quiz App\bin\Debug\net10.0\Quiz App.exe
+C:\Jay\C#\Quiz App\bin\Debug\net10.0\Quiz App.deps.json
+C:\Jay\C#\Quiz App\bin\Debug\net10.0\Quiz App.runtimeconfig.json
+C:\Jay\C#\Quiz App\bin\Debug\net10.0\Quiz App.dll
+C:\Jay\C#\Quiz App\bin\Debug\net10.0\Quiz App.pdb
+C:\Jay\C#\Quiz App\obj\Debug\net10.0\Quiz App.GeneratedMSBuildEditorConfig.editorconfig
+C:\Jay\C#\Quiz App\obj\Debug\net10.0\Quiz App.AssemblyInfoInputs.cache
+C:\Jay\C#\Quiz App\obj\Debug\net10.0\Quiz App.AssemblyInfo.cs
+C:\Jay\C#\Quiz App\obj\Debug\net10.0\Quiz App.csproj.CoreCompileInputs.cache
+C:\Jay\C#\Quiz App\obj\Debug\net10.0\Quiz App.dll
+C:\Jay\C#\Quiz App\obj\Debug\net10.0\refint\Quiz App.dll
+C:\Jay\C#\Quiz App\obj\Debug\net10.0\Quiz App.pdb
+C:\Jay\C#\Quiz App\obj\Debug\net10.0\Quiz App.genruntimeconfig.cache
+C:\Jay\C#\Quiz App\obj\Debug\net10.0\ref\Quiz App.dll

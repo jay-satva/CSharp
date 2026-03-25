@@ -1,0 +1,135 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Jay\\C#\\Student\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|c:\\jay\\c#\\student\\services\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|solutionrelative:services\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|c:\\jay\\c#\\student\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|c:\\jay\\c#\\student\\services\\awardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|solutionrelative:services\\awardservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|c:\\jay\\c#\\student\\utils\\stringvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|solutionrelative:utils\\stringvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|c:\\jay\\c#\\student\\data\\students.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|solutionrelative:data\\students.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|c:\\jay\\c#\\student\\models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|solutionrelative:models\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|c:\\jay\\c#\\student\\utils\\intvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B4A03432-52AE-5301-580D-48A7D97FD60D}|Student.csproj|solutionrelative:utils\\intvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 215,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "StudentService.cs",
+              "DocumentMoniker": "C:\\Jay\\C#\\Student\\Services\\StudentService.cs",
+              "RelativeDocumentMoniker": "Services\\StudentService.cs",
+              "ToolTip": "C:\\Jay\\C#\\Student\\Services\\StudentService.cs",
+              "RelativeToolTip": "Services\\StudentService.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAIwGcAAAB+AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-13T07:08:48.108Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "students.json",
+              "DocumentMoniker": "C:\\Jay\\C#\\Student\\Data\\students.json",
+              "RelativeDocumentMoniker": "Data\\students.json",
+              "ToolTip": "C:\\Jay\\C#\\Student\\Data\\students.json",
+              "RelativeToolTip": "Data\\students.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-12T13:14:17.95Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IntValidator.cs",
+              "DocumentMoniker": "C:\\Jay\\C#\\Student\\Utils\\IntValidator.cs",
+              "RelativeDocumentMoniker": "Utils\\IntValidator.cs",
+              "ToolTip": "C:\\Jay\\C#\\Student\\Utils\\IntValidator.cs",
+              "RelativeToolTip": "Utils\\IntValidator.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAYwAcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T03:59:57.276Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AwardService.cs",
+              "DocumentMoniker": "C:\\Jay\\C#\\Student\\Services\\AwardService.cs",
+              "RelativeDocumentMoniker": "Services\\AwardService.cs",
+              "ToolTip": "C:\\Jay\\C#\\Student\\Services\\AwardService.cs",
+              "RelativeToolTip": "Services\\AwardService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T13:21:36.986Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Student.cs",
+              "DocumentMoniker": "C:\\Jay\\C#\\Student\\Models\\Student.cs",
+              "RelativeDocumentMoniker": "Models\\Student.cs",
+              "ToolTip": "C:\\Jay\\C#\\Student\\Models\\Student.cs",
+              "RelativeToolTip": "Models\\Student.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA8AAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T11:55:40.025Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Jay\\C#\\Student\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Jay\\C#\\Student\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T11:41:15.528Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "StringValidator.cs",
+              "DocumentMoniker": "C:\\Jay\\C#\\Student\\Utils\\StringValidator.cs",
+              "RelativeDocumentMoniker": "Utils\\StringValidator.cs",
+              "ToolTip": "C:\\Jay\\C#\\Student\\Utils\\StringValidator.cs",
+              "RelativeToolTip": "Utils\\StringValidator.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAACcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-12T04:21:59.864Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

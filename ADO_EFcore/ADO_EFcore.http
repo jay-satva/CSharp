@@ -1,0 +1,6 @@
+@ADO_EFcore_HostAddress = http://localhost:5110
+
+GET {{ADO_EFcore_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

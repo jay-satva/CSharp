@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfCity xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <City>
+    <Name>Rajkot</Name>
+    <Population>2500000</Population>
+  </City>
+  <City>
+    <Name>Surat</Name>
+    <Population>7000000</Population>
+  </City>
+  <City>
+    <Name>Ahmedabad</Name>
+    <Population>8500000</Population>
+  </City>
+  <City>
+    <Name>Vadodara</Name>
+    <Population>3500000</Population>
+  </City>
+  <City>
+    <Name>Vadodara</Name>
+    <Population>3500000</Population>
+  </City>
+  <City>
+    <Name>Jamnagar</Name>
+    <Population>1000000</Population>
+  </City>
+  <City>
+    <Name> rajkot</Name>
+    <Population>200000</Population>
+  </City>
+</ArrayOfCity>

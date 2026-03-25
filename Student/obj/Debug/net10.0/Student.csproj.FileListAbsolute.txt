@@ -1,0 +1,14 @@
+C:\Jay\C#\Student\bin\Debug\net10.0\Student.exe
+C:\Jay\C#\Student\bin\Debug\net10.0\Student.deps.json
+C:\Jay\C#\Student\bin\Debug\net10.0\Student.runtimeconfig.json
+C:\Jay\C#\Student\bin\Debug\net10.0\Student.dll
+C:\Jay\C#\Student\bin\Debug\net10.0\Student.pdb
+C:\Jay\C#\Student\obj\Debug\net10.0\Student.GeneratedMSBuildEditorConfig.editorconfig
+C:\Jay\C#\Student\obj\Debug\net10.0\Student.AssemblyInfoInputs.cache
+C:\Jay\C#\Student\obj\Debug\net10.0\Student.AssemblyInfo.cs
+C:\Jay\C#\Student\obj\Debug\net10.0\Student.csproj.CoreCompileInputs.cache
+C:\Jay\C#\Student\obj\Debug\net10.0\Student.dll
+C:\Jay\C#\Student\obj\Debug\net10.0\refint\Student.dll
+C:\Jay\C#\Student\obj\Debug\net10.0\Student.pdb
+C:\Jay\C#\Student\obj\Debug\net10.0\Student.genruntimeconfig.cache
+C:\Jay\C#\Student\obj\Debug\net10.0\ref\Student.dll

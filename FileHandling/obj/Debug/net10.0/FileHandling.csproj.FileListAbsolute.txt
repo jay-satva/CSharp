@@ -1,0 +1,14 @@
+C:\Jay\C#\FileHandling\bin\Debug\net10.0\FileHandling.exe
+C:\Jay\C#\FileHandling\bin\Debug\net10.0\FileHandling.deps.json
+C:\Jay\C#\FileHandling\bin\Debug\net10.0\FileHandling.runtimeconfig.json
+C:\Jay\C#\FileHandling\bin\Debug\net10.0\FileHandling.dll
+C:\Jay\C#\FileHandling\bin\Debug\net10.0\FileHandling.pdb
+C:\Jay\C#\FileHandling\obj\Debug\net10.0\FileHandling.GeneratedMSBuildEditorConfig.editorconfig
+C:\Jay\C#\FileHandling\obj\Debug\net10.0\FileHandling.AssemblyInfoInputs.cache
+C:\Jay\C#\FileHandling\obj\Debug\net10.0\FileHandling.AssemblyInfo.cs
+C:\Jay\C#\FileHandling\obj\Debug\net10.0\FileHandling.csproj.CoreCompileInputs.cache
+C:\Jay\C#\FileHandling\obj\Debug\net10.0\FileHandling.dll
+C:\Jay\C#\FileHandling\obj\Debug\net10.0\refint\FileHandling.dll
+C:\Jay\C#\FileHandling\obj\Debug\net10.0\FileHandling.pdb
+C:\Jay\C#\FileHandling\obj\Debug\net10.0\FileHandling.genruntimeconfig.cache
+C:\Jay\C#\FileHandling\obj\Debug\net10.0\ref\FileHandling.dll

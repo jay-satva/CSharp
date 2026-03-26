@@ -3,52 +3,88 @@
   "WorkspaceRootPath": "C:\\Jay\\CSharp\\FinalExam\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\data\\companyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:data\\companyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:controllers\\customercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\quickbookstoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\quickbookstoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\oauthstatepayload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\oauthstatepayload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\jwtoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\jwtoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\loginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\oauthstatepayload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\oauthstatepayload.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\registerrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\quickbookstoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\quickbookstoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\dtos\\tokendtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:dtos\\tokendtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\dtos\\itemdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:dtos\\itemdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\dtos\\invoicedtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:dtos\\invoicedtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:services\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\tokenresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\tokenresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\invoicerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\invoicerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\middlewares\\refreshmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:middlewares\\refreshmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\data\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:data\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\data\\companyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:data\\companyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:services\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\data\\mongodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -68,14 +104,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\settings\\mongodbsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:settings\\mongodbsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\dtos\\tokendtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:dtos\\tokendtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|c:\\jay\\csharp\\finalexam\\models\\tokenresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1FC7A060-2D58-7A32-9C6C-268DDC119ADA}|FinalExam.csproj|solutionrelative:models\\tokenresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -85,11 +113,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 16,
               "Title": "AppUser.cs",
               "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Models\\AppUser.cs",
               "RelativeDocumentMoniker": "Models\\AppUser.cs",
@@ -98,51 +126,36 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-25T12:18:28.789Z",
-              "IsPinned": true,
+              "IsPinned": true
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "Controllers\\AuthController.cs",
+              "ViewState": "AgIAAKkAAAAALoz0ohb8v7IAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:36:18.718Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "CustomerController.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Controllers\\CustomerController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CustomerController.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Controllers\\CustomerController.cs",
+              "RelativeToolTip": "Controllers\\CustomerController.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwB4AAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T07:33:09.55Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T12:28:09.732Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccountService.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Services\\AccountService.cs",
-              "RelativeDocumentMoniker": "Services\\AccountService.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Services\\AccountService.cs",
-              "RelativeToolTip": "Services\\AccountService.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAYwBUAAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T07:31:14.246Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T05:09:48.426Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "LoginRequest.cs",
               "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Models\\LoginRequest.cs",
               "RelativeDocumentMoniker": "Models\\LoginRequest.cs",
@@ -150,21 +163,43 @@
               "RelativeToolTip": "Models\\LoginRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T05:09:24.018Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T05:09:24.018Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\appsettings.json",
-              "RelativeToolTip": "appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-24T07:10:55.357Z",
-              "EditorCaption": ""
+              "DocumentIndex": 5,
+              "Title": "JwtOptions.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Models\\JwtOptions.cs",
+              "RelativeDocumentMoniker": "Models\\JwtOptions.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Models\\JwtOptions.cs",
+              "RelativeToolTip": "Models\\JwtOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T05:09:19.322Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CompanyRepository.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Data\\CompanyRepository.cs",
+              "RelativeDocumentMoniker": "Data\\CompanyRepository.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Data\\CompanyRepository.cs",
+              "RelativeToolTip": "Data\\CompanyRepository.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAIwCYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T04:56:36.04Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAswC0AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T05:09:48.426Z"
             },
             {
               "$type": "Document",
@@ -176,155 +211,83 @@
               "RelativeToolTip": "Models\\OAuthStatePayload.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T05:09:25.387Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T05:09:25.387Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T07:33:09.55Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "RegisterRequest.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Models\\RegisterRequest.cs",
+              "RelativeDocumentMoniker": "Models\\RegisterRequest.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Models\\RegisterRequest.cs",
+              "RelativeToolTip": "Models\\RegisterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:23:12.71Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "JwtOptions.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Models\\JwtOptions.cs",
-              "RelativeDocumentMoniker": "Models\\JwtOptions.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Models\\JwtOptions.cs",
-              "RelativeToolTip": "Models\\JwtOptions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T05:09:19.322Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "JwtService.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Services\\JwtService.cs",
-              "RelativeDocumentMoniker": "Services\\JwtService.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Services\\JwtService.cs",
-              "RelativeToolTip": "Services\\JwtService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T05:09:44.77Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
               "Title": "QuickBooksToken.cs",
               "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Models\\QuickBooksToken.cs",
               "RelativeDocumentMoniker": "Models\\QuickBooksToken.cs",
               "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Models\\QuickBooksToken.cs",
               "RelativeToolTip": "Models\\QuickBooksToken.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:13:00.599Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "CompanyRepository.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Data\\CompanyRepository.cs",
-              "RelativeDocumentMoniker": "Data\\CompanyRepository.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Data\\CompanyRepository.cs",
-              "RelativeToolTip": "Data\\CompanyRepository.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAIwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T04:56:36.04Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "MongoDbContext.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Data\\MongoDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\MongoDbContext.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Data\\MongoDbContext.cs",
-              "RelativeToolTip": "Data\\MongoDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:05:42.882Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T07:13:00.599Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Data\\UserRepository.cs",
-              "RelativeDocumentMoniker": "Data\\UserRepository.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Data\\UserRepository.cs",
-              "RelativeToolTip": "Data\\UserRepository.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAuwFUAAABlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T11:22:04.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\QuickBooksServices\\Class1.cs",
-              "RelativeDocumentMoniker": "..\\QuickBooksServices\\Class1.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\QuickBooksServices\\Class1.cs",
-              "RelativeToolTip": "..\\QuickBooksServices\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T12:43:49.302Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "FinalExam.http",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\FinalExam.http",
-              "RelativeDocumentMoniker": "FinalExam.http",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\FinalExam.http",
-              "RelativeToolTip": "FinalExam.http",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
-              "WhenOpened": "2026-03-24T10:18:37.393Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
               "Title": "TokenDtos.cs",
               "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\DTOs\\TokenDtos.cs",
               "RelativeDocumentMoniker": "DTOs\\TokenDtos.cs",
               "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\DTOs\\TokenDtos.cs",
               "RelativeToolTip": "DTOs\\TokenDtos.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAA2wA8AAAAlAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA7wA8AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-25T04:25:29.88Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-25T04:25:29.88Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "ItemDtos.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\DTOs\\ItemDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\ItemDtos.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\DTOs\\ItemDtos.cs",
+              "RelativeToolTip": "DTOs\\ItemDtos.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:24:41.426Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "InvoiceDtos.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\DTOs\\InvoiceDtos.cs",
+              "RelativeDocumentMoniker": "DTOs\\InvoiceDtos.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\DTOs\\InvoiceDtos.cs",
+              "RelativeToolTip": "DTOs\\InvoiceDtos.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:24:41.846Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "QuickBooksService.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Services\\QuickBooksService.cs",
-              "RelativeDocumentMoniker": "Services\\QuickBooksService.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Services\\QuickBooksService.cs",
-              "RelativeToolTip": "Services\\QuickBooksService.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAhwBoAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:05:16.732Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "MongoDbSettings.cs",
-              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Settings\\MongoDbSettings.cs",
-              "RelativeDocumentMoniker": "Settings\\MongoDbSettings.cs",
-              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Settings\\MongoDbSettings.cs",
-              "RelativeToolTip": "Settings\\MongoDbSettings.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:07:07.55Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
               "Title": "TokenResponse.cs",
               "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Models\\TokenResponse.cs",
               "RelativeDocumentMoniker": "Models\\TokenResponse.cs",
@@ -332,8 +295,139 @@
               "RelativeToolTip": "Models\\TokenResponse.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-24T07:13:11.866Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-24T07:13:11.866Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Services\\AccountService.cs",
+              "RelativeDocumentMoniker": "Services\\AccountService.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Services\\AccountService.cs",
+              "RelativeToolTip": "Services\\AccountService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T07:31:14.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "InvoiceRecord.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Models\\InvoiceRecord.cs",
+              "RelativeDocumentMoniker": "Models\\InvoiceRecord.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Models\\InvoiceRecord.cs",
+              "RelativeToolTip": "Models\\InvoiceRecord.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:22:54.22Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "RefreshMiddleware.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Middlewares\\RefreshMiddleware.cs",
+              "RelativeDocumentMoniker": "Middlewares\\RefreshMiddleware.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Middlewares\\RefreshMiddleware.cs",
+              "RelativeToolTip": "Middlewares\\RefreshMiddleware.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T12:22:43.773Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-03-24T07:10:55.357Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Data\\UserRepository.cs",
+              "RelativeDocumentMoniker": "Data\\UserRepository.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Data\\UserRepository.cs",
+              "RelativeToolTip": "Data\\UserRepository.cs",
+              "ViewState": "AgIAAKoAAAAAAAAAAAApwMYAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T11:22:04.004Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "JwtService.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Services\\JwtService.cs",
+              "RelativeDocumentMoniker": "Services\\JwtService.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Services\\JwtService.cs",
+              "RelativeToolTip": "Services\\JwtService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-26T05:09:44.77Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "MongoDbContext.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Data\\MongoDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\MongoDbContext.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Data\\MongoDbContext.cs",
+              "RelativeToolTip": "Data\\MongoDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T07:05:42.882Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\QuickBooksServices\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\QuickBooksServices\\Class1.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\QuickBooksServices\\Class1.cs",
+              "RelativeToolTip": "..\\QuickBooksServices\\Class1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-25T12:43:49.302Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "FinalExam.http",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\FinalExam.http",
+              "RelativeDocumentMoniker": "FinalExam.http",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\FinalExam.http",
+              "RelativeToolTip": "FinalExam.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2026-03-24T10:18:37.393Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "QuickBooksService.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Services\\QuickBooksService.cs",
+              "RelativeDocumentMoniker": "Services\\QuickBooksService.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Services\\QuickBooksService.cs",
+              "RelativeToolTip": "Services\\QuickBooksService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAhwBoAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T07:05:16.732Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "MongoDbSettings.cs",
+              "DocumentMoniker": "C:\\Jay\\CSharp\\FinalExam\\Settings\\MongoDbSettings.cs",
+              "RelativeDocumentMoniker": "Settings\\MongoDbSettings.cs",
+              "ToolTip": "C:\\Jay\\CSharp\\FinalExam\\Settings\\MongoDbSettings.cs",
+              "RelativeToolTip": "Settings\\MongoDbSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAQAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-24T07:07:07.55Z"
             }
           ]
         }

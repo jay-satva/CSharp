@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authorizedFetch } from "../auth/api";
+import AppShell from "./AppShell";
+import TablePagination from "./TablePagination";
 
 const InvoiceListing = () => {
   const navigate = useNavigate();
@@ -8,6 +10,7 @@ const InvoiceListing = () => {
   const [loading, setLoading] = useState(true);
   const [deletingId, setDeletingId] = useState(null);
   const [search, setSearch] = useState("");
+  const [page, setPage] = useState(1);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -24,6 +27,8 @@ const InvoiceListing = () => {
       return customerName.includes(query) || invoiceNumber.includes(query) || companyName.includes(query);
     });
   }, [invoices, search]);
+  const pageSize = 10;
+  const pagedInvoices = filteredInvoices.slice((page - 1) * pageSize, page * pageSize);
 
   const loadInvoices = async () => {
     setLoading(true);
@@ -42,6 +47,7 @@ const InvoiceListing = () => {
       }
 
       setInvoices(Array.isArray(data) ? data : []);
+      setPage(1);
     } catch (e) {
       setError(e.message || "Failed to load invoices.");
     } finally {
@@ -52,6 +58,10 @@ const InvoiceListing = () => {
   useEffect(() => {
     loadInvoices();
   }, [navigate]);
+
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
   const handleDelete = async (invoice) => {
     const invoiceId = invoice.id;
@@ -93,13 +103,13 @@ const InvoiceListing = () => {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap');
-        .invoice-list-page{min-height:100vh;background:radial-gradient(circle at top left,rgba(44,107,237,.08),transparent 28%),linear-gradient(180deg,#f7f3eb 0%,#f2eee7 100%);font-family:'DM Sans',sans-serif;color:#1f1a17;padding:28px}
+        .invoice-list-page{font-family:'DM Sans',sans-serif;color:#1f1a17}
         .invoice-list-shell{max-width:1280px;margin:0 auto}
         .invoice-list-topbar,.invoice-list-card{background:rgba(255,255,255,.88);border:1px solid rgba(31,26,23,.06);border-radius:24px;box-shadow:0 18px 34px rgba(31,26,23,.08)}
         .invoice-list-topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:24px}
         .invoice-list-title{font-family:'Instrument Serif',serif;font-size:34px;line-height:1;margin:0 0 8px;font-weight:400}
         .invoice-list-subtitle{margin:0;color:#6f6761;font-size:15px}
-        .invoice-list-card{margin-top:22px;padding:24px}
+        .invoice-list-card{margin-top:22px;padding:20px}
         .btn-solid,.btn-ghost,.btn-danger{border-radius:14px;padding:12px 18px;font-weight:700;font-size:14px}
         .btn-solid{border:none;background:#2c6bed;color:#fff;box-shadow:0 14px 28px rgba(44,107,237,.18)}
         .btn-ghost{border:1px solid rgba(31,26,23,.12);background:#fff;color:#1f1a17}
@@ -122,6 +132,7 @@ const InvoiceListing = () => {
         @media (max-width:900px){.invoice-list-topbar,.invoice-toolbar,.invoice-list-actions,.row-actions{flex-direction:column;align-items:stretch}.btn-solid,.btn-ghost,.btn-danger{width:100%}}
       `}</style>
 
+      <AppShell activeKey="invoice">
       <div className="invoice-list-page">
         <div className="invoice-list-shell">
           <section className="invoice-list-topbar">
@@ -173,7 +184,7 @@ const InvoiceListing = () => {
                     </tr>
                   </thead>
                   <tbody>
-                    {filteredInvoices.map((invoice) => (
+                    {pagedInvoices.map((invoice) => (
                       <tr key={invoice.id}>
                         <td>
                           <div className="invoice-number">#{invoice.quickBooksInvoiceId}</div>
@@ -206,9 +217,17 @@ const InvoiceListing = () => {
                 </table>
               </div>
             )}
+
+            <TablePagination
+              page={page}
+              pageSize={pageSize}
+              totalItems={filteredInvoices.length}
+              onPageChange={setPage}
+            />
           </section>
         </div>
       </div>
+      </AppShell>
     </>
   );
 };

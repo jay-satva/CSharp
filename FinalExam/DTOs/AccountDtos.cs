@@ -8,6 +8,9 @@ public class AccountDto
     public string Name { get; set; } = string.Empty;
     public string? AcctNum { get; set; }
     public string AccountType { get; set; } = string.Empty;
+    public string? AccountSubType { get; set; }
+    public string? Description { get; set; }
+    public string? Classification { get; set; }
     public bool Active { get; set; }
 }
 
@@ -17,4 +20,6 @@ public class CreateAccountRequest
     public string Name { get; set; } = string.Empty;
     public string? AcctNum { get; set; }
     public string AccountType { get; set; } = string.Empty;
+    public string? AccountSubType { get; set; }
+    public string? Description { get; set; }
 }

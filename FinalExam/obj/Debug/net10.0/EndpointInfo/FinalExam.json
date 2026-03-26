@@ -723,6 +723,18 @@
           },
           "accountType": {
             "type": "string"
+          },
+          "accountSubType": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
           }
         }
       },
@@ -744,7 +756,31 @@
               "string"
             ]
           },
+          "middleName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
           "familyName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "suffix": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "companyName": {
             "type": [
               "null",
               "string"
@@ -757,6 +793,36 @@
             ]
           },
           "phone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "mobile": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "billAddrLine1": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "billAddrCity": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "billAddrPostalCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "billAddrCountrySubDivisionCode": {
             "type": [
               "null",
               "string"
@@ -864,6 +930,27 @@
               "string"
             ]
           },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sku": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "unitPrice": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
+          },
           "incomeAccountRef": {
             "type": [
               "null",
@@ -930,7 +1017,31 @@
               "string"
             ]
           },
+          "middleName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
           "familyName": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "title": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "suffix": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "companyName": {
             "type": [
               "null",
               "string"
@@ -943,6 +1054,36 @@
             ]
           },
           "phone": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "mobile": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "billAddrLine1": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "billAddrCity": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "billAddrPostalCode": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "billAddrCountrySubDivisionCode": {
             "type": [
               "null",
               "string"
@@ -1010,6 +1151,27 @@
               "null",
               "string"
             ]
+          },
+          "description": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "sku": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "unitPrice": {
+            "pattern": "^-?(?:0|[1-9]\\d*)(?:\\.\\d+)?$",
+            "type": [
+              "null",
+              "number",
+              "string"
+            ],
+            "format": "double"
           },
           "incomeAccountRef": {
             "type": [

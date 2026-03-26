@@ -1,4 +1,5 @@
 using System.Security.Claims;
+using System.Net.Mail;
 using FinalExam.DTOs;
 using FinalExam.Services;
 using Microsoft.AspNetCore.Authorization;
@@ -51,6 +52,9 @@ public class CustomerController : ControllerBase
             string.IsNullOrWhiteSpace(request.FamilyName))
             return BadRequest(new { message = "Display name or at least one customer name field is required." });
 
+        if (!string.IsNullOrWhiteSpace(request.Email) && !IsValidEmail(request.Email))
+            return BadRequest(new { message = "Customer email format is invalid." });
+
         try
         {
             var created = await _customerService.CreateCustomerAsync(userId, request);
@@ -76,6 +80,9 @@ public class CustomerController : ControllerBase
             string.IsNullOrWhiteSpace(request.GivenName) &&
             string.IsNullOrWhiteSpace(request.FamilyName))
             return BadRequest(new { message = "Display name or at least one customer name field is required." });
+
+        if (!string.IsNullOrWhiteSpace(request.Email) && !IsValidEmail(request.Email))
+            return BadRequest(new { message = "Customer email format is invalid." });
 
         try
         {
@@ -109,6 +116,19 @@ public class CustomerController : ControllerBase
         catch (Exception ex)
         {
             return BadRequest(new { message = ex.Message });
+        }
+    }
+
+    private static bool IsValidEmail(string email)
+    {
+        try
+        {
+            _ = new MailAddress(email);
+            return true;
+        }
+        catch
+        {
+            return false;
         }
     }
 }

@@ -1,16 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authorizedFetch } from "../../auth/api";
+import AppShell from "../AppShell";
+import TablePagination from "../TablePagination";
+import useBodyScrollLock from "../../hooks/useBodyScrollLock";
 
 const emptyForm = {
   id: "",
   syncToken: "",
   realmId: "",
   displayName: "",
+  title: "",
   givenName: "",
+  middleName: "",
   familyName: "",
+  suffix: "",
+  companyName: "",
   email: "",
   phone: "",
+  mobile: "",
+  billAddrLine1: "",
+  billAddrCity: "",
+  billAddrPostalCode: "",
+  billAddrCountrySubDivisionCode: "",
 };
 
 const Customer = () => {
@@ -23,11 +35,28 @@ const Customer = () => {
   const [submitting, setSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [form, setForm] = useState(emptyForm);
 
   const activeCompanies = companies.filter((company) => company.isActive ?? company.IsActive);
+  const pageSize = 8;
+  const filteredCustomers = customers.filter((customer) => {
+    const query = search.trim().toLowerCase();
+    const displayName = (customer.displayName || customer.DisplayName || "").toLowerCase();
+    const email = (customer.email || customer.Email || "").toLowerCase();
+    const phone = (customer.phone || customer.Phone || "").toLowerCase();
+    return !query || displayName.includes(query) || email.includes(query) || phone.includes(query);
+  });
+  const pagedCustomers = filteredCustomers.slice((page - 1) * pageSize, page * pageSize);
+
+  useBodyScrollLock(showModal);
+
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
   useEffect(() => {
     const loadCompanies = async () => {
@@ -89,6 +118,7 @@ const Customer = () => {
         }
 
         setCustomers(Array.isArray(data) ? data : []);
+        setPage(1);
       } catch (e) {
         setError(e.message || "Failed to load QuickBooks customers.");
       } finally {
@@ -116,6 +146,7 @@ const Customer = () => {
     }
 
     setCustomers(Array.isArray(data) ? data : []);
+    setPage(1);
   };
 
   const handleOpenCreate = () => {
@@ -138,10 +169,19 @@ const Customer = () => {
       syncToken: customer.syncToken || customer.SyncToken,
       realmId: customer.realmId || customer.RealmId,
       displayName: customer.displayName || customer.DisplayName || "",
+      title: customer.title || customer.Title || "",
       givenName: customer.givenName || customer.GivenName || "",
+      middleName: customer.middleName || customer.MiddleName || "",
       familyName: customer.familyName || customer.FamilyName || "",
+      suffix: customer.suffix || customer.Suffix || "",
+      companyName: customer.customerCompanyName || customer.CustomerCompanyName || "",
       email: customer.email || customer.Email || "",
       phone: customer.phone || customer.Phone || "",
+      mobile: customer.mobile || customer.Mobile || "",
+      billAddrLine1: customer.billAddrLine1 || customer.BillAddrLine1 || "",
+      billAddrCity: customer.billAddrCity || customer.BillAddrCity || "",
+      billAddrPostalCode: customer.billAddrPostalCode || customer.BillAddrPostalCode || "",
+      billAddrCountrySubDivisionCode: customer.billAddrCountrySubDivisionCode || customer.BillAddrCountrySubDivisionCode || "",
     });
     setShowModal(true);
   };
@@ -170,15 +210,29 @@ const Customer = () => {
       return;
     }
 
+    if (form.email.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim())) {
+      setError("Customer email format is invalid.");
+      return;
+    }
+
     setSubmitting(true);
     try {
       const payload = {
         realmId: form.realmId,
         displayName: form.displayName.trim() || null,
+        title: form.title.trim() || null,
         givenName: form.givenName.trim() || null,
+        middleName: form.middleName.trim() || null,
         familyName: form.familyName.trim() || null,
+        suffix: form.suffix.trim() || null,
+        companyName: form.companyName.trim() || null,
         email: form.email.trim() || null,
         phone: form.phone.trim() || null,
+        mobile: form.mobile.trim() || null,
+        billAddrLine1: form.billAddrLine1.trim() || null,
+        billAddrCity: form.billAddrCity.trim() || null,
+        billAddrPostalCode: form.billAddrPostalCode.trim() || null,
+        billAddrCountrySubDivisionCode: form.billAddrCountrySubDivisionCode.trim() || null,
         syncToken: form.syncToken,
       };
 
@@ -259,15 +313,7 @@ const Customer = () => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap');
 
-        .customer-page {
-          min-height: 100vh;
-          background:
-            radial-gradient(circle at top left, rgba(44, 107, 237, 0.08), transparent 28%),
-            linear-gradient(180deg, #f7f3eb 0%, #f2eee7 100%);
-          font-family: 'DM Sans', sans-serif;
-          color: #1f1a17;
-          padding: 28px;
-        }
+        .customer-page { font-family: 'DM Sans', sans-serif; color: #1f1a17; }
 
         .customer-shell {
           max-width: 1240px;
@@ -366,7 +412,7 @@ const Customer = () => {
 
         .customer-card {
           margin-top: 22px;
-          padding: 24px;
+          padding: 20px;
         }
 
         .customer-toolbar {
@@ -485,6 +531,26 @@ const Customer = () => {
           border-radius: 24px;
           padding: 24px;
           box-shadow: 0 28px 60px rgba(17, 17, 17, 0.18);
+          max-height: min(88vh, 860px);
+          overflow-y: auto;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .modal-card::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+          display: none;
+        }
+
+        .table-search {
+          width: min(360px, 100%);
+          border-radius: 14px;
+          border: 1px solid rgba(31, 26, 23, 0.12);
+          background: #fff;
+          padding: 12px 14px;
+          font-size: 14px;
+          color: #1f1a17;
         }
 
         .modal-title {
@@ -518,10 +584,6 @@ const Customer = () => {
         }
 
         @media (max-width: 720px) {
-          .customer-page {
-            padding: 18px;
-          }
-
           .customer-topbar,
           .customer-toolbar,
           .form-row {
@@ -544,6 +606,7 @@ const Customer = () => {
         }
       `}</style>
 
+      <AppShell activeKey="customer">
       <div className="customer-page">
         <div className="customer-shell">
           <section className="customer-topbar">
@@ -596,6 +659,12 @@ const Customer = () => {
                   )}
                 </select>
               </div>
+              <input
+                className="table-search"
+                placeholder="Search customers..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </div>
 
             {loadingCompanies || loadingCustomers ? (
@@ -616,12 +685,13 @@ const Customer = () => {
                       <th>Customer</th>
                       <th>Email</th>
                       <th>Phone</th>
-                      <th>Status</th>
+                      <th>Company</th>
+                      {/* <th>Status</th> */}
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {customers.map((customer) => (
+                    {pagedCustomers.map((customer) => (
                       <tr key={customer.id || customer.Id}>
                         <td>
                           <div className="customer-name">{customer.displayName || customer.DisplayName}</div>
@@ -633,11 +703,12 @@ const Customer = () => {
                         </td>
                         <td>{customer.email || customer.Email || "-"}</td>
                         <td>{customer.phone || customer.Phone || "-"}</td>
-                        <td>
+                        <td>{customer.customerCompanyName || customer.CustomerCompanyName || "-"}</td>
+                        {/* <td>
                           <span className={`status-pill ${(customer.active ?? customer.Active) ? "active" : "inactive"}`}>
                             {(customer.active ?? customer.Active) ? "Active" : "Inactive"}
                           </span>
-                        </td>
+                        </td> */}
                         <td>
                           <div className="row-actions">
                             <button
@@ -664,6 +735,13 @@ const Customer = () => {
                 </table>
               </div>
             )}
+
+            <TablePagination
+              page={page}
+              pageSize={pageSize}
+              totalItems={filteredCustomers.length}
+              onPageChange={setPage}
+            />
           </section>
         </div>
       </div>
@@ -713,6 +791,17 @@ const Customer = () => {
 
               <div className="form-row">
                 <div>
+                  <label htmlFor="title">Title</label>
+                  <input
+                    id="title"
+                    className="customer-input"
+                    value={form.title}
+                    onChange={(e) => handleFormChange("title", e.target.value)}
+                    placeholder="Title"
+                  />
+                </div>
+
+                <div>
                   <label htmlFor="givenName">First Name</label>
                   <input
                     id="givenName"
@@ -724,6 +813,17 @@ const Customer = () => {
                 </div>
 
                 <div>
+                  <label htmlFor="middleName">Middle Name</label>
+                  <input
+                    id="middleName"
+                    className="customer-input"
+                    value={form.middleName}
+                    onChange={(e) => handleFormChange("middleName", e.target.value)}
+                    placeholder="Middle name"
+                  />
+                </div>
+
+                <div>
                   <label htmlFor="familyName">Last Name</label>
                   <input
                     id="familyName"
@@ -731,6 +831,30 @@ const Customer = () => {
                     value={form.familyName}
                     onChange={(e) => handleFormChange("familyName", e.target.value)}
                     placeholder="Last name"
+                  />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div>
+                  <label htmlFor="suffix">Suffix</label>
+                  <input
+                    id="suffix"
+                    className="customer-input"
+                    value={form.suffix}
+                    onChange={(e) => handleFormChange("suffix", e.target.value)}
+                    placeholder="Suffix"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="companyName">Company Name</label>
+                  <input
+                    id="companyName"
+                    className="customer-input"
+                    value={form.companyName}
+                    onChange={(e) => handleFormChange("companyName", e.target.value)}
+                    placeholder="Company name"
                   />
                 </div>
               </div>
@@ -760,6 +884,65 @@ const Customer = () => {
                 </div>
               </div>
 
+              <div className="form-row">
+                <div>
+                  <label htmlFor="mobile">Mobile</label>
+                  <input
+                    id="mobile"
+                    className="customer-input"
+                    value={form.mobile}
+                    onChange={(e) => handleFormChange("mobile", e.target.value)}
+                    placeholder="Mobile number"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="billAddrLine1">Address Line 1</label>
+                  <input
+                    id="billAddrLine1"
+                    className="customer-input"
+                    value={form.billAddrLine1}
+                    onChange={(e) => handleFormChange("billAddrLine1", e.target.value)}
+                    placeholder="Street address"
+                  />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div>
+                  <label htmlFor="billAddrCity">City</label>
+                  <input
+                    id="billAddrCity"
+                    className="customer-input"
+                    value={form.billAddrCity}
+                    onChange={(e) => handleFormChange("billAddrCity", e.target.value)}
+                    placeholder="City"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="billAddrPostalCode">Postal Code</label>
+                  <input
+                    id="billAddrPostalCode"
+                    className="customer-input"
+                    value={form.billAddrPostalCode}
+                    onChange={(e) => handleFormChange("billAddrPostalCode", e.target.value)}
+                    placeholder="Postal code"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="billAddrCountrySubDivisionCode">State / Province Code</label>
+                <input
+                  id="billAddrCountrySubDivisionCode"
+                  className="customer-input"
+                  value={form.billAddrCountrySubDivisionCode}
+                  onChange={(e) => handleFormChange("billAddrCountrySubDivisionCode", e.target.value)}
+                  placeholder="State or province code"
+                />
+              </div>
+
               <div className="modal-actions">
                 <button type="button" className="btn-ghost" onClick={handleCloseModal} disabled={submitting}>
                   Cancel
@@ -772,6 +955,7 @@ const Customer = () => {
           </div>
         </div>
       ) : null}
+      </AppShell>
     </>
   );
 };

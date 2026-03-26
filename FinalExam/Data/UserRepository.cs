@@ -8,6 +8,8 @@ namespace FinalExam.Data;
 
 public class UserRepository
 {
+    private static readonly object BootstrapLock = new();
+    private static bool _bootstrapped;
     private readonly IMongoCollection<AppUser> _users;
 
     public UserRepository(IOptions<MongoDbSettings> settings)
@@ -16,8 +18,7 @@ public class UserRepository
         var db = client.GetDatabase(settings.Value.DatabaseName);
         _users = db.GetCollection<AppUser>(settings.Value.Collections.UsersCollection);
 
-        BackfillMissingUserIds();
-        EnsureIndexes();
+        EnsureMongoBootstrap();
     }
 
     public async Task<AppUser?> GetByEmailAsync(string email) =>
@@ -97,6 +98,22 @@ public class UserRepository
         return existing;
     }
 
+    private void EnsureMongoBootstrap()
+    {
+        if (_bootstrapped)
+            return;
+
+        lock (BootstrapLock)
+        {
+            if (_bootstrapped)
+                return;
+
+            BackfillMissingUserIds();
+            EnsureIndexes();
+            _bootstrapped = true;
+        }
+    }
+
     private void BackfillMissingUserIds()
     {
         var missingUsers = _users.Find(Builders<AppUser>.Filter.Or(
@@ -120,10 +137,6 @@ public class UserRepository
             .Where(name => !name.IsBsonNull && name.IsString)
             .Select(name => name.AsString)
             .ToHashSet(StringComparer.Ordinal);
-
-        DropIndexIfExists(existingIndexNames, "UserId_1");
-        DropIndexIfExists(existingIndexNames, "Email_1");
-        DropIndexIfExists(existingIndexNames, "IntuitSub_1");
 
         var emailIndexModel = new CreateIndexModel<AppUser>(
             Builders<AppUser>.IndexKeys.Ascending(u => u.Email),
@@ -185,23 +198,14 @@ public class UserRepository
                 }
             });
 
-        _users.Indexes.CreateOne(emailIndexModel);
-        _users.Indexes.CreateOne(userIdIndexModel);
-        _users.Indexes.CreateOne(intuitSubIndexModel);
-    }
+        if (!existingIndexNames.Contains("Email_1"))
+            _users.Indexes.CreateOne(emailIndexModel);
 
-    private void DropIndexIfExists(HashSet<string> existingIndexNames, string indexName)
-    {
-        if (!existingIndexNames.Contains(indexName))
-            return;
+        if (!existingIndexNames.Contains("UserId_1"))
+            _users.Indexes.CreateOne(userIdIndexModel);
 
-        try
-        {
-            _users.Indexes.DropOne(indexName);
-        }
-        catch (MongoCommandException ex) when (ex.Message.Contains("index not found", StringComparison.OrdinalIgnoreCase))
-        {
-        }
+        if (!existingIndexNames.Contains("IntuitSub_1"))
+            _users.Indexes.CreateOne(intuitSubIndexModel);
     }
 
     private static string EnsureUserId(string? userId) =>

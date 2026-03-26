@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { authorizedFetch } from "../auth/api";
 import { clearAuth, getAuth } from "../auth/authStorage";
+import AppShell from "./AppShell";
+import TablePagination from "./TablePagination";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -12,10 +14,21 @@ const Dashboard = () => {
   const [selectedRealmId, setSelectedRealmId] = useState("");
   const [loading, setLoading] = useState(true);
   const [actionLoading, setActionLoading] = useState(false);
+  const [companyPage, setCompanyPage] = useState(1);
+  const [companySearch, setCompanySearch] = useState("");
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
 
   const activeCompanies = companies.filter((company) => company.isActive ?? company.IsActive);
+  const companyPageSize = 8;
+  const filteredCompanies = companies.filter((company) => {
+    const query = companySearch.trim().toLowerCase();
+    const companyName = (company.companyName || company.CompanyName || "").toLowerCase();
+    const realmId = (company.realmId || company.RealmId || "").toLowerCase();
+    const country = (company.country || company.Country || "").toLowerCase();
+    return !query || companyName.includes(query) || realmId.includes(query) || country.includes(query);
+  });
+  const pagedCompanies = filteredCompanies.slice((companyPage - 1) * companyPageSize, companyPage * companyPageSize);
   const storedAuth = getAuth();
   const displayName = user?.name || user?.Name || storedAuth?.name || "Intuit User";
   const displayEmail =
@@ -79,6 +92,7 @@ const Dashboard = () => {
 
         const companyData = await loadCompanies();
         setCompanies(companyData);
+        setCompanyPage(1);
       } catch (e) {
         setError(e.message || "Failed to load dashboard.");
       } finally {
@@ -98,6 +112,10 @@ const Dashboard = () => {
       setSelectedRealmId("");
     }
   }, [activeCompanies, selectedRealmId]);
+
+  useEffect(() => {
+    setCompanyPage(1);
+  }, [companySearch]);
 
   const handleConnectQuickBooks = () => {
     const startConnect = async () => {
@@ -148,6 +166,7 @@ const Dashboard = () => {
 
       const refreshedCompanies = await loadCompanies();
       setCompanies(refreshedCompanies);
+      setCompanyPage(1);
       setStatus(data.message || "Company status updated.");
     } catch (e) {
       setError(e.message || "Failed to update company status.");
@@ -248,7 +267,7 @@ const Dashboard = () => {
         }
 
         .dashboard-main {
-          padding: 28px;
+          padding: 0;
         }
 
         .dashboard-topbar {
@@ -334,7 +353,7 @@ const Dashboard = () => {
           background: rgba(255, 255, 255, 0.84);
           border: 1px solid rgba(31, 26, 23, 0.06);
           border-radius: 24px;
-          padding: 24px;
+          padding: 20px;
           box-shadow: 0 18px 34px rgba(31, 26, 23, 0.08);
         }
 
@@ -434,6 +453,17 @@ const Dashboard = () => {
           margin-top: 20px;
         }
 
+        .table-search {
+          width: min(360px, 100%);
+          border-radius: 14px;
+          border: 1px solid rgba(31, 26, 23, 0.12);
+          background: #ffffff;
+          padding: 12px 14px;
+          font-size: 14px;
+          color: #1f1a17;
+          margin: 18px 0 4px;
+        }
+
         .company-list th,
         .company-list td {
           text-align: left;
@@ -513,7 +543,6 @@ const Dashboard = () => {
         }
 
         @media (max-width: 720px) {
-          .dashboard-main,
           .dashboard-sidebar {
             padding: 18px;
           }
@@ -538,38 +567,8 @@ const Dashboard = () => {
       {loading ? (
         <div className="loading-shell">Loading dashboard...</div>
       ) : (
-        <div className="dashboard-shell">
-          <div className="dashboard-layout">
-            <aside className="dashboard-sidebar">
-              <div className="dashboard-brand">
-                <h1>QuickBooks</h1>
-              </div>
-
-              <div className="dashboard-nav">
-                <button type="button" className="active">
-                  Dashboard
-                </button>
-                <button type="button" onClick={() => navigate("/account")}>
-                  Account
-                </button>
-                <button type="button" onClick={() => navigate("/customer")}>
-                  Customer
-                </button>
-                <button type="button" onClick={() => navigate("/item")}>
-                  Item
-                </button>
-                <button type="button" onClick={() => navigate("/invoices")}>
-                  Invoice
-                </button>
-              </div>
-
-              {/* <div className="sidebar-note">
-                Only active companies should appear in selection dropdowns later. Disconnected companies stay in Mongo with
-                <strong> IsActive = false</strong>.
-              </div> */}
-            </aside>
-
-            <main className="dashboard-main">
+        <AppShell activeKey="dashboard">
+          <main className="dashboard-main">
               <section className="dashboard-topbar">
                 <div>
                   <h2 className="topbar-title">Dashboard</h2>
@@ -672,6 +671,12 @@ const Dashboard = () => {
                   </div>
                 ) : (
                   <div style={{ overflowX: "auto" }}>
+                    <input
+                      className="table-search"
+                      placeholder="Search companies..."
+                      value={companySearch}
+                      onChange={(e) => setCompanySearch(e.target.value)}
+                    />
                     <table className="company-list">
                       <thead>
                         <tr>
@@ -683,7 +688,7 @@ const Dashboard = () => {
                         </tr>
                       </thead>
                       <tbody>
-                        {companies.map((company) => {
+                        {pagedCompanies.map((company) => {
                           const realmId = company.realmId || company.RealmId;
                           const companyName = company.companyName || company.CompanyName;
                           const country = company.country || company.Country;
@@ -719,10 +724,16 @@ const Dashboard = () => {
                     </table>
                   </div>
                 )}
+
+                <TablePagination
+                  page={companyPage}
+                  pageSize={companyPageSize}
+                  totalItems={filteredCompanies.length}
+                  onPageChange={setCompanyPage}
+                />
               </section>
-            </main>
-          </div>
-        </div>
+          </main>
+        </AppShell>
       )}
     </>
   );

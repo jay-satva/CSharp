@@ -69,7 +69,7 @@ public class CustomerService
         var accessToken = await _quickBooksService.GetAccessTokenAsync(userId, company.RealmId);
         var baseUrl = _configuration["QuickBooks:BaseUrl"] ?? "https://sandbox-quickbooks.api.intuit.com";
 
-        var payload = BuildUpsertPayload(requestDto.DisplayName, requestDto.GivenName, requestDto.FamilyName, requestDto.Email, requestDto.Phone);
+        var payload = BuildUpsertPayload(requestDto);
 
         var request = new HttpRequestMessage(
             HttpMethod.Post,
@@ -96,7 +96,7 @@ public class CustomerService
         var accessToken = await _quickBooksService.GetAccessTokenAsync(userId, company.RealmId);
         var baseUrl = _configuration["QuickBooks:BaseUrl"] ?? "https://sandbox-quickbooks.api.intuit.com";
 
-        var payload = BuildUpsertPayload(requestDto.DisplayName, requestDto.GivenName, requestDto.FamilyName, requestDto.Email, requestDto.Phone);
+        var payload = BuildUpsertPayload(requestDto);
         payload["Id"] = customerId;
         payload["SyncToken"] = requestDto.SyncToken.Trim();
         payload["sparse"] = true;
@@ -167,49 +167,94 @@ public class CustomerService
         return fallback;
     }
 
-    private static Dictionary<string, object?> BuildUpsertPayload(
-        string? displayName,
-        string? givenName,
-        string? familyName,
-        string? email,
-        string? phone)
+    private static Dictionary<string, object?> BuildUpsertPayload(CreateCustomerRequest requestDto)
     {
         var payload = new Dictionary<string, object?>();
 
-        if (!string.IsNullOrWhiteSpace(displayName))
-            payload["DisplayName"] = displayName.Trim();
+        if (!string.IsNullOrWhiteSpace(requestDto.DisplayName))
+            payload["DisplayName"] = requestDto.DisplayName.Trim();
 
-        if (!string.IsNullOrWhiteSpace(givenName))
-            payload["GivenName"] = givenName.Trim();
+        if (!string.IsNullOrWhiteSpace(requestDto.Title))
+            payload["Title"] = requestDto.Title.Trim();
 
-        if (!string.IsNullOrWhiteSpace(familyName))
-            payload["FamilyName"] = familyName.Trim();
+        if (!string.IsNullOrWhiteSpace(requestDto.GivenName))
+            payload["GivenName"] = requestDto.GivenName.Trim();
 
-        if (!string.IsNullOrWhiteSpace(email))
-            payload["PrimaryEmailAddr"] = new { Address = email.Trim() };
+        if (!string.IsNullOrWhiteSpace(requestDto.MiddleName))
+            payload["MiddleName"] = requestDto.MiddleName.Trim();
 
-        if (!string.IsNullOrWhiteSpace(phone))
-            payload["PrimaryPhone"] = new { FreeFormNumber = phone.Trim() };
+        if (!string.IsNullOrWhiteSpace(requestDto.FamilyName))
+            payload["FamilyName"] = requestDto.FamilyName.Trim();
+
+        if (!string.IsNullOrWhiteSpace(requestDto.Suffix))
+            payload["Suffix"] = requestDto.Suffix.Trim();
+
+        if (!string.IsNullOrWhiteSpace(requestDto.CompanyName))
+            payload["CompanyName"] = requestDto.CompanyName.Trim();
+
+        if (!string.IsNullOrWhiteSpace(requestDto.Email))
+            payload["PrimaryEmailAddr"] = new { Address = requestDto.Email.Trim() };
+
+        if (!string.IsNullOrWhiteSpace(requestDto.Phone))
+            payload["PrimaryPhone"] = new { FreeFormNumber = requestDto.Phone.Trim() };
+
+        if (!string.IsNullOrWhiteSpace(requestDto.Mobile))
+            payload["Mobile"] = new { FreeFormNumber = requestDto.Mobile.Trim() };
+
+        if (!string.IsNullOrWhiteSpace(requestDto.BillAddrLine1) ||
+            !string.IsNullOrWhiteSpace(requestDto.BillAddrCity) ||
+            !string.IsNullOrWhiteSpace(requestDto.BillAddrPostalCode) ||
+            !string.IsNullOrWhiteSpace(requestDto.BillAddrCountrySubDivisionCode))
+        {
+            payload["BillAddr"] = new
+            {
+                Line1 = requestDto.BillAddrLine1?.Trim(),
+                City = requestDto.BillAddrCity?.Trim(),
+                PostalCode = requestDto.BillAddrPostalCode?.Trim(),
+                CountrySubDivisionCode = requestDto.BillAddrCountrySubDivisionCode?.Trim()
+            };
+        }
 
         return payload;
     }
 
     private static CustomerDto MapCustomer(JsonElement customer, string realmId, string companyName)
     {
+        var hasBillAddr = customer.TryGetProperty("BillAddr", out var billAddrObj);
+
         return new CustomerDto
         {
             Id = ReadString(customer, "Id") ?? string.Empty,
             SyncToken = ReadString(customer, "SyncToken") ?? string.Empty,
             RealmId = realmId,
-            CompanyName = companyName,
+            ConnectedCompanyName = companyName,
             DisplayName = ReadString(customer, "DisplayName") ?? string.Empty,
             GivenName = ReadString(customer, "GivenName"),
+            MiddleName = ReadString(customer, "MiddleName"),
             FamilyName = ReadString(customer, "FamilyName"),
+            Title = ReadString(customer, "Title"),
+            Suffix = ReadString(customer, "Suffix"),
+            CustomerCompanyName = ReadString(customer, "CompanyName"),
             Email = customer.TryGetProperty("PrimaryEmailAddr", out var emailObj)
                 ? ReadString(emailObj, "Address")
                 : null,
             Phone = customer.TryGetProperty("PrimaryPhone", out var phoneObj)
                 ? ReadString(phoneObj, "FreeFormNumber")
+                : null,
+            Mobile = customer.TryGetProperty("Mobile", out var mobileObj)
+                ? ReadString(mobileObj, "FreeFormNumber")
+                : null,
+            BillAddrLine1 = hasBillAddr
+                ? ReadString(billAddrObj, "Line1")
+                : null,
+            BillAddrCity = hasBillAddr
+                ? ReadString(billAddrObj, "City")
+                : null,
+            BillAddrPostalCode = hasBillAddr
+                ? ReadString(billAddrObj, "PostalCode")
+                : null,
+            BillAddrCountrySubDivisionCode = hasBillAddr
+                ? ReadString(billAddrObj, "CountrySubDivisionCode")
                 : null,
             Active = !customer.TryGetProperty("Active", out var active) || active.ValueKind == JsonValueKind.True
         };

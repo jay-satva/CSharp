@@ -63,6 +63,9 @@ public class AccountService
                 Name = ReadString(account, "Name") ?? string.Empty,
                 AcctNum = ReadString(account, "AcctNum"),
                 AccountType = ReadString(account, "AccountType") ?? string.Empty,
+                AccountSubType = ReadString(account, "AccountSubType"),
+                Description = ReadString(account, "Description"),
+                Classification = ReadString(account, "Classification"),
                 Active = account.TryGetProperty("Active", out var active) && active.ValueKind == JsonValueKind.True
             });
         }
@@ -86,6 +89,12 @@ public class AccountService
 
         if (!string.IsNullOrWhiteSpace(requestDto.AcctNum))
             payload["AcctNum"] = requestDto.AcctNum.Trim();
+
+        if (!string.IsNullOrWhiteSpace(requestDto.AccountSubType))
+            payload["AccountSubType"] = requestDto.AccountSubType.Trim();
+
+        if (!string.IsNullOrWhiteSpace(requestDto.Description))
+            payload["Description"] = requestDto.Description.Trim();
 
         var request = new HttpRequestMessage(
             HttpMethod.Post,
@@ -113,6 +122,9 @@ public class AccountService
             Name = ReadString(account, "Name") ?? requestDto.Name.Trim(),
             AcctNum = ReadString(account, "AcctNum"),
             AccountType = ReadString(account, "AccountType") ?? requestDto.AccountType.Trim(),
+            AccountSubType = ReadString(account, "AccountSubType"),
+            Description = ReadString(account, "Description"),
+            Classification = ReadString(account, "Classification"),
             Active = account.TryGetProperty("Active", out var active) && active.ValueKind == JsonValueKind.True
         };
     }

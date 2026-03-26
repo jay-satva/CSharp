@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { authorizedFetch } from "../auth/api";
+import AppShell from "./AppShell";
 
 const ConnectionPage = () => {
   const location = useLocation();
@@ -100,6 +101,7 @@ const ConnectionPage = () => {
   };
 
   return (
+    <AppShell activeKey="dashboard">
     <div className="container mt-5">
       <div className="card shadow">
         <div className="card-body p-5">
@@ -182,6 +184,7 @@ const ConnectionPage = () => {
         </div>
       </div>
     </div>
+    </AppShell>
   );
 };
 

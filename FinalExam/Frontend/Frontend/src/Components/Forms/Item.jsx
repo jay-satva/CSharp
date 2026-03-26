@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authorizedFetch } from "../../auth/api";
+import AppShell from "../AppShell";
+import TablePagination from "../TablePagination";
+import useBodyScrollLock from "../../hooks/useBodyScrollLock";
+
+const itemTypes = ["Service", "Inventory", "NonInventory", "Category", "Bundle"];
 
 const emptyForm = {
   id: "",
@@ -9,6 +14,9 @@ const emptyForm = {
   name: "",
   qtyOnHand: "",
   type: "",
+  description: "",
+  sku: "",
+  unitPrice: "",
   incomeAccountRef: "",
   expenseAccountRef: "",
   assetAccountRef: "",
@@ -26,11 +34,28 @@ const Item = () => {
   const [submitting, setSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [form, setForm] = useState(emptyForm);
 
   const activeCompanies = companies.filter((company) => company.isActive ?? company.IsActive);
+  const pageSize = 8;
+  const filteredItems = items.filter((item) => {
+    const query = search.trim().toLowerCase();
+    const name = (item.name || item.Name || "").toLowerCase();
+    const type = (item.type || item.Type || "").toLowerCase();
+    const sku = (item.sku || item.Sku || "").toLowerCase();
+    return !query || name.includes(query) || type.includes(query) || sku.includes(query);
+  });
+  const pagedItems = filteredItems.slice((page - 1) * pageSize, page * pageSize);
+
+  useBodyScrollLock(showModal);
+
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
   useEffect(() => {
     const loadCompanies = async () => {
@@ -125,6 +150,7 @@ const Item = () => {
         }
 
         setItems(Array.isArray(data) ? data : []);
+        setPage(1);
       } catch (e) {
         setError(e.message || "Failed to load QuickBooks items.");
       } finally {
@@ -152,6 +178,7 @@ const Item = () => {
     }
 
     setItems(Array.isArray(data) ? data : []);
+    setPage(1);
   };
 
   const handleOpenCreate = () => {
@@ -176,6 +203,9 @@ const Item = () => {
       name: item.name || item.Name || "",
       qtyOnHand: (item.qtyOnHand ?? item.QtyOnHand ?? "").toString(),
       type: item.type || item.Type || "",
+      description: item.description || item.Description || "",
+      sku: item.sku || item.Sku || "",
+      unitPrice: (item.unitPrice ?? item.UnitPrice ?? "").toString(),
       incomeAccountRef: "",
       expenseAccountRef: "",
       assetAccountRef: "",
@@ -207,8 +237,23 @@ const Item = () => {
       return;
     }
 
+    if (!form.type.trim()) {
+      setError("Item type is required.");
+      return;
+    }
+
     if (!isEditing && !form.incomeAccountRef) {
       setError("Income account is required.");
+      return;
+    }
+
+    if (form.qtyOnHand !== "" && Number(form.qtyOnHand) < 0) {
+      setError("Quantity on hand cannot be negative.");
+      return;
+    }
+
+    if (form.unitPrice !== "" && Number(form.unitPrice) < 0) {
+      setError("Unit price cannot be negative.");
       return;
     }
 
@@ -220,11 +265,15 @@ const Item = () => {
     setSubmitting(true);
     try {
       const qtyValue = form.qtyOnHand === "" ? null : Number(form.qtyOnHand);
+      const unitPriceValue = form.unitPrice === "" ? null : Number(form.unitPrice);
       const payload = {
         realmId: form.realmId,
         name: form.name.trim(),
         qtyOnHand: Number.isNaN(qtyValue) ? null : qtyValue,
         type: form.type.trim() || null,
+        description: form.description.trim() || null,
+        sku: form.sku.trim() || null,
+        unitPrice: Number.isNaN(unitPriceValue) ? null : unitPriceValue,
         incomeAccountRef: form.incomeAccountRef || null,
         expenseAccountRef: form.expenseAccountRef || null,
         assetAccountRef: form.assetAccountRef || null,
@@ -323,15 +372,7 @@ const Item = () => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap');
 
-        .item-page {
-          min-height: 100vh;
-          background:
-            radial-gradient(circle at top left, rgba(44, 107, 237, 0.08), transparent 28%),
-            linear-gradient(180deg, #f7f3eb 0%, #f2eee7 100%);
-          font-family: 'DM Sans', sans-serif;
-          color: #1f1a17;
-          padding: 28px;
-        }
+        .item-page { font-family: 'DM Sans', sans-serif; color: #1f1a17; }
 
         .item-shell {
           max-width: 1240px;
@@ -430,7 +471,7 @@ const Item = () => {
 
         .item-card {
           margin-top: 22px;
-          padding: 24px;
+          padding: 20px;
         }
 
         .item-toolbar {
@@ -543,6 +584,26 @@ const Item = () => {
           border-radius: 24px;
           padding: 24px;
           box-shadow: 0 28px 60px rgba(17, 17, 17, 0.18);
+          max-height: min(88vh, 880px);
+          overflow-y: auto;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .modal-card::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+          display: none;
+        }
+
+        .table-search {
+          width: min(360px, 100%);
+          border-radius: 14px;
+          border: 1px solid rgba(31, 26, 23, 0.12);
+          background: #fff;
+          padding: 12px 14px;
+          font-size: 14px;
+          color: #1f1a17;
         }
 
         .modal-title {
@@ -576,10 +637,6 @@ const Item = () => {
         }
 
         @media (max-width: 720px) {
-          .item-page {
-            padding: 18px;
-          }
-
           .item-topbar,
           .item-toolbar,
           .form-row {
@@ -602,6 +659,7 @@ const Item = () => {
         }
       `}</style>
 
+      <AppShell activeKey="item">
       <div className="item-page">
         <div className="item-shell">
           <section className="item-topbar">
@@ -654,6 +712,12 @@ const Item = () => {
                   )}
                 </select>
               </div>
+              <input
+                className="table-search"
+                placeholder="Search items..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </div>
 
             {loadingCompanies || loadingItems ? (
@@ -674,12 +738,13 @@ const Item = () => {
                       <th>Item Name</th>
                       <th>Type</th>
                       <th>Income Account</th>
-                      <th>Status</th>
+                      {/* <th>Unit Price</th> */}
+                      {/* <th>Status</th> */}
                       <th>Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {items.map((item) => (
+                    {pagedItems.map((item) => (
                       <tr key={item.id || item.Id}>
                         <td>
                           <div className="item-name">{item.name || item.Name}</div>
@@ -688,11 +753,12 @@ const Item = () => {
                         <td>
                           {item.incomeAccountName || item.IncomeAccountName || "-"}
                         </td>
-                        <td>
+                        {/* <td>{item.unitPrice ?? item.UnitPrice ?? "-"}</td> */}
+                        {/* <td>
                           <span className={`status-pill ${(item.active ?? item.Active) ? "active" : "inactive"}`}>
                             {(item.active ?? item.Active) ? "Active" : "Inactive"}
                           </span>
-                        </td>
+                        </td> */}
                         <td>
                           <div className="row-actions">
                             <button
@@ -719,12 +785,19 @@ const Item = () => {
                 </table>
               </div>
             )}
+
+            <TablePagination
+              page={page}
+              pageSize={pageSize}
+              totalItems={filteredItems.length}
+              onPageChange={setPage}
+            />
           </section>
         </div>
       </div>
 
       {showModal ? (
-        <div className="modal-backdrop" onClick={handleCloseModal}>
+        <div className="modal-backdrop" style={{}} onClick={handleCloseModal}>
           <div className="modal-card" onClick={(e) => e.stopPropagation()}>
             <h2 className="modal-title">{isEditing ? "Edit Item" : "Create Item"}</h2>
             <p className="modal-subtitle">
@@ -783,15 +856,59 @@ const Item = () => {
 
                 <div>
                   <label htmlFor="itemType">Type</label>
-                  <input
+                  <select
                     id="itemType"
-                    className="item-input"
+                    className="item-select"
                     value={form.type}
                     onChange={(e) => handleFormChange("type", e.target.value)}
-                    placeholder="Service / Inventory / Category / anything"
                     disabled={isEditing}
+                  >
+                    <option value="">Select item type</option>
+                    {itemTypes.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div>
+                  <label htmlFor="itemSku">SKU</label>
+                  <input
+                    id="itemSku"
+                    className="item-input"
+                    value={form.sku}
+                    onChange={(e) => handleFormChange("sku", e.target.value)}
+                    placeholder="Optional SKU"
                   />
                 </div>
+
+                <div>
+                  <label htmlFor="unitPrice">Unit Price</label>
+                  <input
+                    id="unitPrice"
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    className="item-input"
+                    value={form.unitPrice}
+                    onChange={(e) => handleFormChange("unitPrice", e.target.value)}
+                    placeholder="0.00"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label htmlFor="itemDescription">Description</label>
+                <input
+                  id="itemDescription"
+                  className="item-input"
+                  value={form.description}
+                  onChange={(e) => handleFormChange("description", e.target.value)}
+                  placeholder="Optional description"
+                />
               </div>
 
               {!isEditing ? (
@@ -886,6 +1003,7 @@ const Item = () => {
           </div>
         </div>
       ) : null}
+      </AppShell>
     </>
   );
 };

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { authorizedFetch } from "../../auth/api";
+import AppShell from "../AppShell";
+import TablePagination from "../TablePagination";
+import useBodyScrollLock from "../../hooks/useBodyScrollLock";
 
 const accountTypes = [
   "Bank",
@@ -29,6 +32,8 @@ const Account = () => {
   const [loadingAccounts, setLoadingAccounts] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [showModal, setShowModal] = useState(false);
+  const [page, setPage] = useState(1);
+  const [search, setSearch] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [form, setForm] = useState({
@@ -36,9 +41,26 @@ const Account = () => {
     name: "",
     acctNum: "",
     accountType: "",
+    accountSubType: "",
+    description: "",
   });
 
   const activeCompanies = companies.filter((company) => company.isActive ?? company.IsActive);
+  const pageSize = 8;
+  const filteredAccounts = accounts.filter((account) => {
+    const query = search.trim().toLowerCase();
+    const name = (account.name || account.Name || "").toLowerCase();
+    const type = (account.accountType || account.AccountType || "").toLowerCase();
+    const subtype = (account.accountSubType || account.AccountSubType || "").toLowerCase();
+    return !query || name.includes(query) || type.includes(query) || subtype.includes(query);
+  });
+  const pagedAccounts = filteredAccounts.slice((page - 1) * pageSize, page * pageSize);
+
+  useBodyScrollLock(showModal);
+
+  useEffect(() => {
+    setPage(1);
+  }, [search]);
 
   useEffect(() => {
     const loadCompanies = async () => {
@@ -101,6 +123,7 @@ const Account = () => {
         }
 
         setAccounts(Array.isArray(data) ? data : []);
+        setPage(1);
       } catch (e) {
         setError(e.message || "Failed to load QuickBooks accounts.");
       } finally {
@@ -119,6 +142,8 @@ const Account = () => {
       name: "",
       acctNum: "",
       accountType: "",
+      accountSubType: "",
+      description: "",
     });
     setShowModal(true);
   };
@@ -141,6 +166,11 @@ const Account = () => {
       return;
     }
 
+    if (form.name.trim().length > 100) {
+      setError("Account name cannot exceed 100 characters.");
+      return;
+    }
+
     if (form.name.includes('"') || form.name.includes(":")) {
       setError('Account name cannot contain double quotes or colon.');
       return;
@@ -148,6 +178,11 @@ const Account = () => {
 
     if (form.acctNum.includes(":")) {
       setError("Account number cannot contain colon.");
+      return;
+    }
+
+    if (form.acctNum.trim().length > 20) {
+      setError("Account number cannot exceed 20 characters.");
       return;
     }
 
@@ -163,6 +198,8 @@ const Account = () => {
           name: form.name.trim(),
           acctNum: form.acctNum.trim() || null,
           accountType: form.accountType,
+          accountSubType: form.accountSubType.trim() || null,
+          description: form.description.trim() || null,
         }),
       });
 
@@ -185,6 +222,7 @@ const Account = () => {
       });
       const refreshedData = await refreshed.json().catch(() => ([]));
       setAccounts(Array.isArray(refreshedData) ? refreshedData : []);
+      setPage(1);
     } catch (e) {
       setError(e.message || "Failed to create account in QuickBooks.");
     } finally {
@@ -197,15 +235,7 @@ const Account = () => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap');
 
-        .account-page {
-          min-height: 100vh;
-          background:
-            radial-gradient(circle at top left, rgba(44, 107, 237, 0.08), transparent 28%),
-            linear-gradient(180deg, #f7f3eb 0%, #f2eee7 100%);
-          font-family: 'DM Sans', sans-serif;
-          color: #1f1a17;
-          padding: 28px;
-        }
+        .account-page { font-family: 'DM Sans', sans-serif; color: #1f1a17; }
 
         .account-shell {
           max-width: 1240px;
@@ -296,7 +326,7 @@ const Account = () => {
 
         .account-card {
           margin-top: 22px;
-          padding: 24px;
+          padding: 20px;
         }
 
         .account-toolbar {
@@ -402,6 +432,26 @@ const Account = () => {
           border-radius: 24px;
           padding: 24px;
           box-shadow: 0 28px 60px rgba(17, 17, 17, 0.18);
+          max-height: min(88vh, 820px);
+          overflow-y: auto;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+        }
+
+        .modal-card::-webkit-scrollbar {
+          width: 0;
+          height: 0;
+          display: none;
+        }
+
+        .table-search {
+          width: min(360px, 100%);
+          border-radius: 14px;
+          border: 1px solid rgba(31, 26, 23, 0.12);
+          background: #fff;
+          padding: 12px 14px;
+          font-size: 14px;
+          color: #1f1a17;
         }
 
         .modal-title {
@@ -459,6 +509,7 @@ const Account = () => {
         }
       `}</style>
 
+      <AppShell activeKey="account">
       <div className="account-page">
         <div className="account-shell">
           <section className="account-topbar">
@@ -515,6 +566,12 @@ const Account = () => {
                   )}
                 </select>
               </div>
+              <input
+                className="table-search"
+                placeholder="Search accounts..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
             </div>
 
             {loadingCompanies || loadingAccounts ? (
@@ -535,17 +592,21 @@ const Account = () => {
                       <th>Account Name</th>
                       {/* <th>Account Number</th> */}
                       <th>Type</th>
+                      <th>Sub Type</th>
+                      <th>Description</th>
                       <th>Status</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {accounts.map((account) => (
+                    {pagedAccounts.map((account) => (
                       <tr key={account.id || account.Id}>
                         <td>
                           <div className="account-name">{account.name || account.Name}</div>
                         </td>
                         {/* <td>{account.acctNum || account.AcctNum || "-"}</td> */}
                         <td>{account.accountType || account.AccountType || "-"}</td>
+                        <td>{account.accountSubType || account.AccountSubType || "-"}</td>
+                        <td>{account.description || account.Description || "-"}</td>
                         <td>
                           <span className={`status-pill ${(account.active ?? account.Active) ? "active" : "inactive"}`}>
                             {(account.active ?? account.Active) ? "Active" : "Inactive"}
@@ -557,6 +618,13 @@ const Account = () => {
                 </table>
               </div>
             )}
+
+            <TablePagination
+              page={page}
+              pageSize={pageSize}
+              totalItems={filteredAccounts.length}
+              onPageChange={setPage}
+            />
           </section>
         </div>
       </div>
@@ -631,6 +699,30 @@ const Account = () => {
                 </div>
               </div>
 
+              <div className="form-row">
+                <div>
+                  <label htmlFor="accountSubType">Account Sub Type</label>
+                  <input
+                    id="accountSubType"
+                    className="account-input"
+                    value={form.accountSubType}
+                    onChange={(e) => handleFormChange("accountSubType", e.target.value)}
+                    placeholder="Optional sub type"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="accountDescription">Description</label>
+                  <input
+                    id="accountDescription"
+                    className="account-input"
+                    value={form.description}
+                    onChange={(e) => handleFormChange("description", e.target.value)}
+                    placeholder="Optional description"
+                  />
+                </div>
+              </div>
+
               <div className="modal-actions">
                 <button type="button" className="btn-ghost" onClick={handleCloseModal} disabled={submitting}>
                   Cancel
@@ -643,6 +735,7 @@ const Account = () => {
           </div>
         </div>
       ) : null}
+      </AppShell>
     </>
   );
 };

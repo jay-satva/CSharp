@@ -11,6 +11,15 @@ namespace FinalExam.Controllers;
 [Authorize]
 public class ItemController : ControllerBase
 {
+    private static readonly HashSet<string> AllowedItemTypes = new(StringComparer.OrdinalIgnoreCase)
+    {
+        "Service",
+        "Inventory",
+        "NonInventory",
+        "Category",
+        "Bundle"
+    };
+
     private readonly ItemService _itemService;
 
     public ItemController(ItemService itemService)
@@ -49,6 +58,15 @@ public class ItemController : ControllerBase
         if (request.Name.Contains(':') || request.Name.Contains('\t') || request.Name.Contains('\n') || request.Name.Contains('\r'))
             return BadRequest(new { message = "Item name cannot contain colons, tabs, or new lines." });
 
+        if (!string.IsNullOrWhiteSpace(request.Type) && !AllowedItemTypes.Contains(request.Type.Trim()))
+            return BadRequest(new { message = "Item type must be one of Service, Inventory, NonInventory, Category, or Bundle." });
+
+        if (request.QtyOnHand.HasValue && request.QtyOnHand.Value < 0)
+            return BadRequest(new { message = "Quantity on hand cannot be negative." });
+
+        if (request.UnitPrice.HasValue && request.UnitPrice.Value < 0)
+            return BadRequest(new { message = "Unit price cannot be negative." });
+
         if (string.IsNullOrWhiteSpace(request.IncomeAccountRef))
             return BadRequest(new { message = "Income account is required." });
 
@@ -81,6 +99,15 @@ public class ItemController : ControllerBase
 
         if (request.Name.Contains(':') || request.Name.Contains('\t') || request.Name.Contains('\n') || request.Name.Contains('\r'))
             return BadRequest(new { message = "Item name cannot contain colons, tabs, or new lines." });
+
+        if (!string.IsNullOrWhiteSpace(request.Type) && !AllowedItemTypes.Contains(request.Type.Trim()))
+            return BadRequest(new { message = "Item type must be one of Service, Inventory, NonInventory, Category, or Bundle." });
+
+        if (request.QtyOnHand.HasValue && request.QtyOnHand.Value < 0)
+            return BadRequest(new { message = "Quantity on hand cannot be negative." });
+
+        if (request.UnitPrice.HasValue && request.UnitPrice.Value < 0)
+            return BadRequest(new { message = "Unit price cannot be negative." });
 
         try
         {

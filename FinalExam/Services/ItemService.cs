@@ -73,6 +73,9 @@ public class ItemService
             requestDto.Name,
             requestDto.QtyOnHand,
             requestDto.Type,
+            requestDto.Description,
+            requestDto.Sku,
+            requestDto.UnitPrice,
             requestDto.IncomeAccountRef,
             requestDto.ExpenseAccountRef,
             requestDto.AssetAccountRef);
@@ -106,6 +109,9 @@ public class ItemService
             requestDto.Name,
             requestDto.QtyOnHand,
             requestDto.Type,
+            requestDto.Description,
+            requestDto.Sku,
+            requestDto.UnitPrice,
             requestDto.IncomeAccountRef,
             requestDto.ExpenseAccountRef,
             requestDto.AssetAccountRef);
@@ -183,6 +189,9 @@ public class ItemService
         string name,
         decimal? qtyOnHand,
         string? type,
+        string? description,
+        string? sku,
+        decimal? unitPrice,
         string? incomeAccountRef,
         string? expenseAccountRef,
         string? assetAccountRef)
@@ -194,6 +203,15 @@ public class ItemService
 
         if (!string.IsNullOrWhiteSpace(type))
             payload["Type"] = type.Trim();
+
+        if (!string.IsNullOrWhiteSpace(description))
+            payload["Description"] = description.Trim();
+
+        if (!string.IsNullOrWhiteSpace(sku))
+            payload["Sku"] = sku.Trim();
+
+        if (unitPrice.HasValue)
+            payload["UnitPrice"] = unitPrice.Value;
 
         if (!string.IsNullOrWhiteSpace(incomeAccountRef))
             payload["IncomeAccountRef"] = new { value = incomeAccountRef.Trim() };
@@ -236,6 +254,11 @@ public class ItemService
             Name = ReadString(item, "Name") ?? string.Empty,
             QtyOnHand = qtyOnHand,
             Type = ReadString(item, "Type"),
+            Description = ReadString(item, "Description"),
+            Sku = ReadString(item, "Sku"),
+            UnitPrice = item.TryGetProperty("UnitPrice", out var unitPrice) && unitPrice.ValueKind == JsonValueKind.Number
+                ? unitPrice.GetDecimal()
+                : null,
             IncomeAccountName = item.TryGetProperty("IncomeAccountRef", out var incomeAccountRef)
                 ? ReadString(incomeAccountRef, "name")
                 : null,

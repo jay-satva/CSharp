@@ -79,6 +79,9 @@ public class InvoiceController : ControllerBase
             return BadRequest(new { message = "Each line item must have an item, quantity greater than 0, and a valid unit price." });
         }
 
+        if (request.DueDate.HasValue && request.DueDate.Value.Date < request.InvoiceDate.Date)
+            return BadRequest(new { message = "Due date must be on or after the invoice date." });
+
         try
         {
             var created = await _invoiceService.CreateInvoiceAsync(userId, request);
@@ -111,6 +114,9 @@ public class InvoiceController : ControllerBase
         {
             return BadRequest(new { message = "Each line item must have an item, quantity greater than 0, and a valid unit price." });
         }
+
+        if (request.DueDate.HasValue && request.DueDate.Value.Date < request.InvoiceDate.Date)
+            return BadRequest(new { message = "Due date must be on or after the invoice date." });
 
         try
         {

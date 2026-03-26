@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { authorizedFetch } from "../../auth/api";
+import AppShell from "../AppShell";
 
 const emptyLineItem = {
   itemRef: "",
@@ -243,6 +244,11 @@ const Invoice = () => {
       return;
     }
 
+    if (form.dueDate && form.invoiceDate && form.dueDate < form.invoiceDate) {
+      setError("Due date must be on or after the invoice date.");
+      return;
+    }
+
     if (!isEditing && !form.accountRef) {
       setError("Please select an accounts receivable account.");
       return;
@@ -323,13 +329,13 @@ const Invoice = () => {
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap');
-        .invoice-page{min-height:100vh;background:radial-gradient(circle at top left,rgba(44,107,237,.08),transparent 28%),linear-gradient(180deg,#f7f3eb 0%,#f2eee7 100%);font-family:'DM Sans',sans-serif;color:#1f1a17;padding:28px}
+        .invoice-page{font-family:'DM Sans',sans-serif;color:#1f1a17}
         .invoice-shell{max-width:1280px;margin:0 auto}
         .invoice-topbar,.invoice-card{background:rgba(255,255,255,.88);border:1px solid rgba(31,26,23,.06);border-radius:24px;box-shadow:0 18px 34px rgba(31,26,23,.08)}
         .invoice-topbar{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:24px}
         .invoice-title{font-family:'Instrument Serif',serif;font-size:34px;line-height:1;margin:0 0 8px;font-weight:400}
         .invoice-subtitle{margin:0;color:#6f6761;font-size:15px}
-        .invoice-card{margin-top:22px;padding:24px}
+        .invoice-card{margin-top:22px;padding:20px}
         .invoice-form{display:grid;gap:18px}
         .invoice-form label{display:block;margin-bottom:8px;font-size:13px;font-weight:700;color:#756d67;text-transform:uppercase;letter-spacing:.05em}
         .invoice-input,.invoice-select,.invoice-textarea{width:100%;border-radius:14px;border:1px solid rgba(31,26,23,.12);background:#fff;padding:13px 14px;font-size:15px;color:#1f1a17;font-family:inherit}
@@ -354,6 +360,7 @@ const Invoice = () => {
         @media (max-width:960px){.invoice-topbar,.form-row,.line-item-grid,.invoice-actions,.line-item-actions{flex-direction:column;grid-template-columns:1fr;align-items:stretch}.btn-solid,.btn-ghost,.btn-danger{width:100%}}
       `}</style>
 
+      <AppShell activeKey="invoice">
       <div className="invoice-page">
         <div className="invoice-shell">
           <section className="invoice-topbar">
@@ -444,7 +451,7 @@ const Invoice = () => {
                       </div>
                       <div>
                         <label htmlFor="dueDate">Due Date</label>
-                        <input id="dueDate" type="date" className="invoice-input" value={form.dueDate} onChange={(e) => updateField("dueDate", e.target.value)} />
+                        <input id="dueDate" type="date" min={form.invoiceDate || undefined} className="invoice-input" value={form.dueDate} onChange={(e) => updateField("dueDate", e.target.value)} />
                       </div>
                     </div>
 
@@ -522,6 +529,7 @@ const Invoice = () => {
           </section>
         </div>
       </div>
+      </AppShell>
     </>
   );
 };

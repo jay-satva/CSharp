@@ -54,6 +54,12 @@ public class AccountController : ControllerBase
         if (!string.IsNullOrWhiteSpace(request.AcctNum) && request.AcctNum.Contains(':'))
             return BadRequest(new { message = "Account number cannot contain colon." });
 
+        if (request.Name.Trim().Length > 100)
+            return BadRequest(new { message = "Account name cannot exceed 100 characters." });
+
+        if (!string.IsNullOrWhiteSpace(request.AcctNum) && request.AcctNum.Trim().Length > 20)
+            return BadRequest(new { message = "Account number cannot exceed 20 characters." });
+
         try
         {
             var created = await _accountService.CreateAccountAsync(userId, request);

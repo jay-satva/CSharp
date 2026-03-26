@@ -9,6 +9,9 @@ public class ItemDto
     public string Name { get; set; } = string.Empty;
     public decimal? QtyOnHand { get; set; }
     public string? Type { get; set; }
+    public string? Description { get; set; }
+    public string? Sku { get; set; }
+    public decimal? UnitPrice { get; set; }
     public string? IncomeAccountName { get; set; }
     public bool Active { get; set; }
 }
@@ -19,6 +22,9 @@ public class CreateItemRequest
     public string Name { get; set; } = string.Empty;
     public decimal? QtyOnHand { get; set; }
     public string? Type { get; set; }
+    public string? Description { get; set; }
+    public string? Sku { get; set; }
+    public decimal? UnitPrice { get; set; }
     public string? IncomeAccountRef { get; set; }
     public string? ExpenseAccountRef { get; set; }
     public string? AssetAccountRef { get; set; }

@@ -1,8 +1,12 @@
+using System.Security.Claims;
+using System.Text;
 using FinalExam.Data;
-using FinalExam.Services;
 using FinalExam.Middlewares;
+using FinalExam.Models;
+using FinalExam.Services;
 using FinalExam.Settings;
-//using QuickBooksServices;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,38 +14,48 @@ builder.Services.AddControllers();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
 
-//var obj = new Class1();
-
-// Bind MongoDbSettings for repositories using IOptions<MongoDbSettings>
 builder.Services.Configure<MongoDbSettings>(builder.Configuration.GetSection("MongoDbSettings"));
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection("Jwt"));
 
-// Session — must be registered before app.Build()
-builder.Services.AddDistributedMemoryCache();
-builder.Services.AddSession(options =>
-{
-    options.IdleTimeout = TimeSpan.FromMinutes(30);
-    options.Cookie.HttpOnly = true;
-    options.Cookie.IsEssential = true;
-    // SameSite=None required if frontend and backend are on different ports
-    options.Cookie.SameSite = SameSiteMode.None;
-    options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-});
-
-// DI
 builder.Services.AddSingleton<MongoDbContext>();
 builder.Services.AddScoped<CompanyRepository>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<QuickBooksService>();
+builder.Services.AddScoped<AccountService>();
+builder.Services.AddScoped<CustomerService>();
+builder.Services.AddScoped<ItemService>();
+builder.Services.AddScoped<InvoiceRepository>();
+builder.Services.AddScoped<InvoiceService>();
+builder.Services.AddScoped<JwtService>();
 
-// CORS — AllowCredentials() is required for session cookies to work cross-origin
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Secret"]!)),
+            ValidateIssuer = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidateAudience = true,
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            ValidateLifetime = true,
+            ClockSkew = TimeSpan.Zero,
+            NameClaimType = ClaimTypes.Name,
+            RoleClaimType = ClaimTypes.Role
+        };
+    });
+
+builder.Services.AddAuthorization();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReact", policy =>
     {
-        policy.WithOrigins("http://localhost:5173", "https://localhost:7142", "http://localhost:5130")
+        policy.WithOrigins(builder.Configuration["Frontend:Url"]!, "http://localhost:5130", "https://localhost:7142")
               .AllowAnyMethod()
-              .AllowAnyHeader()
-              .AllowCredentials();  // needed for session cookie
+              .AllowAnyHeader();
     });
 });
 
@@ -53,16 +67,11 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 
 app.UseStaticFiles();
-
-// Order matters — CORS and Session must come before routing/auth
 app.UseCors("AllowReact");
-app.UseSession();          // must be before UseRouting so session is available in controllers
 app.UseRouting();
-
-// Custom middleware for token auto-refresh
-app.UseMiddleware<RefreshMiddleware>();
-
+app.UseAuthentication();
 app.UseAuthorization();
+app.UseMiddleware<RefreshMiddleware>();
 
 app.MapControllers();
 

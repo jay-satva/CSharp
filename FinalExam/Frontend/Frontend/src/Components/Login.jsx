@@ -1,15 +1,25 @@
-import React, { useState } from 'react';
-
-const API_BASE = 'http://localhost:5130';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { API_BASE } from '../auth/api';
+import { setAuth } from '../auth/authStorage';
 
 const Login = () => {
+  const location = useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const nextError = params.get('error');
+    if (nextError) {
+      setError(nextError);
+    }
+  }, [location.search]);
+
   const handleIntuitLogin = () => {
-    window.location.href = `${API_BASE}/auth/sso/connect`;
+    window.location.href = `${API_BASE}/auth/sso/connect?mode=signin`;
   };
 
   const handleManualLogin = async (e) => {
@@ -26,17 +36,23 @@ const Login = () => {
       const res = await fetch(`${API_BASE}/auth/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
         body: JSON.stringify({ email, password }),
       });
 
+      const data = await res.json().catch(() => ({}));
       if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
         setError(data.message || 'Invalid email or password.');
         return;
       }
 
-      // Manual login should NEVER redirect into Intuit SSO.
+      setAuth({
+        accessToken: data.accessToken,
+        userId: data.userId,
+        name: data.name,
+        email: data.email,
+        intuitSub: data.intuitSub,
+      });
+
       window.location.href = '/dashboard';
     } catch {
       setError('Could not connect to the server. Please try again.');

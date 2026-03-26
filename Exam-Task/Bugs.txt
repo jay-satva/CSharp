@@ -1,0 +1,5 @@
+1. Implement Multiple Companies
+2. Option to add customer, item and accounts 
+3. Profile name is not loading
+4. Remove name field from the MongoDB
+5. 

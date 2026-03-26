@@ -74,3 +74,4 @@ C:\Jay\CSharp\FinalExam\bin\Debug\net10.0\BCrypt.Net-Next.dll
 C:\Jay\CSharp\FinalExam\bin\Debug\net10.0\FinalExam.exe
 C:\Jay\CSharp\FinalExam\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Jay\CSharp\FinalExam\obj\Debug\net10.0\FinalExam.sourcelink.json
+C:\Jay\CSharp\FinalExam\bin\Debug\net10.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

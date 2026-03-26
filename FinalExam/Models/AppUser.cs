@@ -17,14 +17,6 @@ public class AppUser
     public string? Email { get; set; }
     public string? PasswordHash { get; set; }
 
-    public string? AccessToken { get; set; }
-    public string? IdToken { get; set; }
-    public string? RefreshToken { get; set; }
-    public string? RealmId { get; set; }
-    public DateTime? AccessTokenExpiry { get; set; }
-    public DateTime? RefreshTokenExpiry { get; set; }
-    public DateTime? TokenCreatedAt { get; set; }
-
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 }
 

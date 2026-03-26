@@ -42,21 +42,20 @@ public class UserRepository
         await _users.ReplaceOneAsync(u => u.Id == user.Id, user);
     }
 
-    public async Task<AppUser> UpsertQuickBooksTokensAsync(
+    public async Task<AppUser> UpsertIntuitUserAsync(
         string? intuitSub,
         string? email,
+        string? targetUserId,
         string? name,
-        string accessToken,
-        string refreshToken,
-        string? idToken,
-        string? realmId,
-        DateTime accessTokenExpiry,
-        DateTime refreshTokenExpiry)
+        bool linkIntuitSub = true)
     {
         var normalizedEmail = NormalizeEmail(email);
         AppUser? existing = null;
 
-        if (!string.IsNullOrWhiteSpace(intuitSub))
+        if (!string.IsNullOrWhiteSpace(targetUserId))
+            existing = await GetByUserIdAsync(targetUserId);
+
+        if (existing == null && !string.IsNullOrWhiteSpace(intuitSub))
             existing = await GetByIntuitSubAsync(intuitSub);
 
         if (existing == null && !string.IsNullOrWhiteSpace(normalizedEmail))
@@ -78,17 +77,14 @@ public class UserRepository
         }
 
         existing.UserId = EnsureUserId(existing.UserId);
-        if (!string.IsNullOrWhiteSpace(intuitSub))
-            existing.IntuitSub = intuitSub;
-        if (!string.IsNullOrWhiteSpace(normalizedEmail))
+        if (linkIntuitSub && !string.IsNullOrWhiteSpace(intuitSub))
+        {
+            var owner = await GetByIntuitSubAsync(intuitSub);
+            if (owner == null || owner.Id == existing.Id)
+                existing.IntuitSub = intuitSub;
+        }
+        if (string.IsNullOrWhiteSpace(existing.Email) && !string.IsNullOrWhiteSpace(normalizedEmail))
             existing.Email = normalizedEmail;
-        existing.AccessToken = accessToken;
-        existing.RefreshToken = refreshToken;
-        existing.IdToken = idToken;
-        existing.RealmId = realmId;
-        existing.AccessTokenExpiry = accessTokenExpiry;
-        existing.RefreshTokenExpiry = refreshTokenExpiry;
-        existing.TokenCreatedAt = existing.TokenCreatedAt ?? DateTime.UtcNow;
 
         if (string.IsNullOrWhiteSpace(existing.Name) && !string.IsNullOrWhiteSpace(name))
             existing.Name = name.Trim();

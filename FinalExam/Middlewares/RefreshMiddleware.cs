@@ -1,33 +1,18 @@
-﻿namespace FinalExam.Middlewares
+using FinalExam.Services;
+
+namespace FinalExam.Middlewares;
+
+public class RefreshMiddleware
 {
-    using FinalExam.Services;
-    using Microsoft.AspNetCore.Http;
+    private readonly RequestDelegate _next;
 
-    public class RefreshMiddleware
+    public RefreshMiddleware(RequestDelegate next)
     {
-        private readonly RequestDelegate _next;
+        _next = next;
+    }
 
-        public RefreshMiddleware(RequestDelegate next)
-        {
-            _next = next;
-        }
-
-        public async Task InvokeAsync(HttpContext context, QuickBooksService qbService)
-        {
-            var userId = context.Session.GetString("userId");
-            if (!string.IsNullOrEmpty(userId))
-            {
-                try 
-                {
-
-                    await qbService.GetAccessTokenAsync(userId);
-                }
-                catch 
-                {
-
-                }
-            }
-            await _next(context);
-        }
+    public async Task InvokeAsync(HttpContext context, QuickBooksService qbService)
+    {
+        await _next(context);
     }
 }

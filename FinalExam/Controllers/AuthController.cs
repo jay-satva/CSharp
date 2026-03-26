@@ -1,7 +1,11 @@
+using System.Security.Claims;
 using FinalExam.Data;
+using FinalExam.DTOs;
 using FinalExam.Models;
 using FinalExam.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 namespace FinalExam.Controllers;
 
@@ -12,12 +16,21 @@ public class AuthController : ControllerBase
     private readonly QuickBooksService _qbService;
     private readonly UserRepository _userRepo;
     private readonly CompanyRepository _companyRepo;
+    private readonly JwtService _jwtService;
+    private readonly IConfiguration _configuration;
 
-    public AuthController(QuickBooksService qbService, UserRepository userRepo, CompanyRepository companyRepo)
+    public AuthController(
+        QuickBooksService qbService,
+        UserRepository userRepo,
+        CompanyRepository companyRepo,
+        JwtService jwtService,
+        IConfiguration configuration)
     {
         _qbService = qbService;
         _userRepo = userRepo;
         _companyRepo = companyRepo;
+        _jwtService = jwtService;
+        _configuration = configuration;
     }
 
     [HttpPost("register")]
@@ -63,18 +76,21 @@ public class AuthController : ControllerBase
         if (!passwordValid)
             return Unauthorized(new { message = "Invalid email or password." });
 
-        HttpContext.Session.SetString("authType", "manual");
-        HttpContext.Session.SetString("userId", user.UserId);
-        SetOptionalSessionString("email", user.Email);
-
-        return Ok(new { message = "Logged in.", userId = user.UserId });
+        return Ok(BuildAuthResponse(user));
     }
 
     [HttpGet("sso/connect")]
-    public IActionResult SsoConnect()
+    public IActionResult SsoConnect([FromQuery] string mode = "signin")
     {
-        var state = Guid.NewGuid().ToString("N");
-        HttpContext.Session.SetString("oauth_state_sso", state);
+        var normalizedMode = string.Equals(mode, "signup", StringComparison.OrdinalIgnoreCase)
+            ? "signup"
+            : "signin";
+
+        var state = _jwtService.GenerateOAuthStateToken(new OAuthStatePayload
+        {
+            Mode = normalizedMode
+        });
+
         var url = _qbService.GetSsoAuthorizationUrl(state);
         return Redirect(url);
     }
@@ -85,51 +101,74 @@ public class AuthController : ControllerBase
         [FromQuery] string? state,
         [FromQuery] string? error = null)
     {
+        var frontendUrl = _configuration["Frontend:Url"]!;
+        var authPath = "login";
+
+        if (!string.IsNullOrWhiteSpace(state))
+        {
+            try
+            {
+                var payload = _jwtService.ValidateOAuthStateToken(state);
+                authPath = string.Equals(payload.Mode, "signup", StringComparison.OrdinalIgnoreCase)
+                    ? "signup"
+                    : "login";
+            }
+            catch
+            {
+                authPath = "login";
+            }
+        }
+
         if (!string.IsNullOrEmpty(error))
-            return Redirect($"http://localhost:5173/login?error={Uri.EscapeDataString(error)}");
+            return Redirect($"{frontendUrl}/{authPath}?error={Uri.EscapeDataString(error)}");
 
         if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(state))
-            return Redirect("http://localhost:5173/login?error=missing_params");
+            return Redirect($"{frontendUrl}/{authPath}?error=missing_params");
 
-        var savedState = HttpContext.Session.GetString("oauth_state_sso");
-        if (state != savedState)
-            return Redirect("http://localhost:5173/login?error=invalid_state");
-
-        HttpContext.Session.Remove("oauth_state_sso");
+        OAuthStatePayload oauthState;
+        try
+        {
+            oauthState = _jwtService.ValidateOAuthStateToken(state);
+        }
+        catch (SecurityTokenException)
+        {
+            return Redirect($"{frontendUrl}/{authPath}?error=invalid_state");
+        }
 
         try
         {
             var (_, user) = await _qbService.ExchangeCodeForTokensAsync(
                 code: code,
                 realmId: null,
+                targetUserId: null,
                 userEmailFallbackForMissingIdToken: null,
                 userNameFallbackForMissingIdToken: null,
                 syncCompanyInfo: false);
 
-            HttpContext.Session.SetString("userId", user.UserId);
-            SetOptionalSessionString("email", user.Email);
-            HttpContext.Session.SetString("authType", "intuit");
-
-            return Redirect("http://localhost:5173/dashboard?status=success");
+            return Redirect(BuildFrontendAuthCallbackUrl(user, "success"));
         }
         catch (Exception ex)
         {
-            return Redirect($"http://localhost:5173/login?error={Uri.EscapeDataString(ex.Message)}");
+            return Redirect($"{frontendUrl}/{authPath}?error={Uri.EscapeDataString(ex.Message)}");
         }
     }
 
-    [HttpGet("qb/connect")]
-    public IActionResult QbConnect()
+    [Authorize]
+    [HttpGet("qb/connect-url")]
+    public IActionResult GetQuickBooksConnectUrl()
     {
-        var userId = HttpContext.Session.GetString("userId");
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (string.IsNullOrWhiteSpace(userId))
             return Unauthorized(new { message = "Not logged in." });
 
-        var state = Guid.NewGuid().ToString("N");
-        HttpContext.Session.SetString("oauth_state_qb", state);
+        var state = _jwtService.GenerateOAuthStateToken(new OAuthStatePayload
+        {
+            Mode = "qb",
+            UserId = userId
+        });
 
         var url = _qbService.GetQbAuthorizationUrl(state);
-        return Redirect(url);
+        return Ok(new { url });
     }
 
     [HttpGet("/callback/qb")]
@@ -139,61 +178,71 @@ public class AuthController : ControllerBase
         [FromQuery] string? realmId,
         [FromQuery] string? error = null)
     {
+        var frontendUrl = _configuration["Frontend:Url"]!;
+
         if (!string.IsNullOrEmpty(error))
-            return Redirect($"http://localhost:5173/dashboard?error={Uri.EscapeDataString(error)}");
+            return Redirect($"{frontendUrl}/dashboard?error={Uri.EscapeDataString(error)}");
 
         if (string.IsNullOrEmpty(code) || string.IsNullOrEmpty(state) || string.IsNullOrEmpty(realmId))
-            return Redirect("http://localhost:5173/dashboard?error=missing_params");
+            return Redirect($"{frontendUrl}/dashboard?error=missing_params");
 
-        var savedState = HttpContext.Session.GetString("oauth_state_qb");
-        if (state != savedState)
-            return Redirect("http://localhost:5173/dashboard?error=invalid_state");
+        OAuthStatePayload oauthState;
+        try
+        {
+            oauthState = _jwtService.ValidateOAuthStateToken(state);
+        }
+        catch (SecurityTokenException)
+        {
+            return Redirect($"{frontendUrl}/dashboard?error=invalid_state");
+        }
 
-        HttpContext.Session.Remove("oauth_state_qb");
-
-        var fallbackEmail = HttpContext.Session.GetString("email");
+        if (string.IsNullOrWhiteSpace(oauthState.UserId))
+            return Redirect($"{frontendUrl}/dashboard?error=missing_user_context");
 
         try
         {
-            var (_, user) = await _qbService.ExchangeCodeForTokensAsync(
+            await _qbService.ExchangeCodeForTokensAsync(
                 code: code,
                 realmId: realmId,
-                userEmailFallbackForMissingIdToken: fallbackEmail,
+                targetUserId: oauthState.UserId,
+                userEmailFallbackForMissingIdToken: null,
                 userNameFallbackForMissingIdToken: null,
                 syncCompanyInfo: true);
 
-            HttpContext.Session.SetString("userId", user.UserId);
-            SetOptionalSessionString("email", user.Email);
-            HttpContext.Session.SetString("authType", "intuit");
-            return Redirect("http://localhost:5173/dashboard?status=connected");
+            return Redirect($"{frontendUrl}/dashboard?status=connected");
         }
         catch (Exception ex)
         {
-            return Redirect($"http://localhost:5173/dashboard?error={Uri.EscapeDataString(ex.Message)}");
+            return Redirect($"{frontendUrl}/dashboard?error={Uri.EscapeDataString(ex.Message)}");
         }
     }
 
+    [Authorize]
     [HttpGet("user")]
     public async Task<IActionResult> GetCurrentUser()
     {
-        var userId = HttpContext.Session.GetString("userId");
-        if (string.IsNullOrEmpty(userId))
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (string.IsNullOrWhiteSpace(userId))
             return Unauthorized(new { message = "Not logged in." });
 
         var user = await _userRepo.GetByUserIdAsync(userId);
+        if (user == null)
+            return Unauthorized(new { message = "User not found." });
+
         return Ok(new
         {
-            UserId = userId,
-            Email = user?.Email,
-            Name = user?.Name,
-            IntuitSub = user?.IntuitSub
+            UserId = user.UserId,
+            Email = user.Email,
+            Name = user.Name,
+            IntuitSub = user.IntuitSub
         });
     }
 
+    [Authorize]
     [HttpGet("/qb/companies")]
     public async Task<IActionResult> GetCompanies()
     {
-        var userId = HttpContext.Session.GetString("userId");
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (string.IsNullOrWhiteSpace(userId))
             return Unauthorized(new { message = "Not logged in." });
 
@@ -201,43 +250,85 @@ public class AuthController : ControllerBase
         return Ok(companies);
     }
 
+    [Authorize]
     [HttpPost("/qb/companies/{realmId}/connect")]
     public async Task<IActionResult> ConnectCompany([FromRoute] string realmId)
     {
-        var userId = HttpContext.Session.GetString("userId");
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (string.IsNullOrWhiteSpace(userId))
             return Unauthorized(new { message = "Not logged in." });
 
+        var company = await _companyRepo.GetByUserIdAndRealmIdAsync(userId, realmId);
+        if (company == null)
+            return NotFound(new { message = "Company not found." });
+
+        if (string.IsNullOrWhiteSpace(company.RefreshToken))
+            return BadRequest(new { message = "This company was fully disconnected. Use Connect to QuickBooks to reconnect it." });
+
         var updated = await _companyRepo.SetCompanyActiveAsync(userId, realmId, true);
-        return updated ? Ok(new { message = "Company connected." }) : NotFound(new { message = "Company not found." });
+        return updated
+            ? Ok(new { message = "Company connected." })
+            : NotFound(new { message = "Company not found." });
     }
 
+    [Authorize]
     [HttpPost("/qb/companies/{realmId}/disconnect")]
     public async Task<IActionResult> DisconnectCompany([FromRoute] string realmId)
     {
-        var userId = HttpContext.Session.GetString("userId");
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (string.IsNullOrWhiteSpace(userId))
             return Unauthorized(new { message = "Not logged in." });
 
-        var updated = await _companyRepo.SetCompanyActiveAsync(userId, realmId, false);
-        return updated ? Ok(new { message = "Company disconnected." }) : NotFound(new { message = "Company not found." });
+        try
+        {
+            var updated = await _qbService.DisconnectCompanyAsync(userId, realmId);
+            return updated
+                ? Ok(new { message = "Company disconnected." })
+                : NotFound(new { message = "Company not found." });
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(new { message = ex.Message });
+        }
     }
 
+    [Authorize]
     [HttpPost("logout")]
     public IActionResult Logout()
     {
-        HttpContext.Session.Clear();
         return Ok(new { message = "Logged out." });
     }
 
-    private void SetOptionalSessionString(string key, string? value)
+    private AuthResponseDto BuildAuthResponse(AppUser user)
     {
-        if (string.IsNullOrWhiteSpace(value))
+        return new AuthResponseDto
         {
-            HttpContext.Session.Remove(key);
-            return;
-        }
+            AccessToken = _jwtService.GenerateAccessToken(user),
+            UserId = user.UserId,
+            Name = string.IsNullOrWhiteSpace(user.Name) ? "User" : user.Name,
+            Email = user.Email,
+            IntuitSub = user.IntuitSub
+        };
+    }
 
-        HttpContext.Session.SetString(key, value);
+    private string BuildFrontendAuthCallbackUrl(AppUser user, string status)
+    {
+        var frontendUrl = _configuration["Frontend:Url"]!;
+        var auth = BuildAuthResponse(user);
+        var query = new List<string>
+        {
+            $"accessToken={Uri.EscapeDataString(auth.AccessToken)}",
+            $"userId={Uri.EscapeDataString(auth.UserId)}",
+            $"name={Uri.EscapeDataString(auth.Name)}",
+            $"status={Uri.EscapeDataString(status)}"
+        };
+
+        if (!string.IsNullOrWhiteSpace(auth.Email))
+            query.Add($"email={Uri.EscapeDataString(auth.Email)}");
+
+        if (!string.IsNullOrWhiteSpace(auth.IntuitSub))
+            query.Add($"intuitSub={Uri.EscapeDataString(auth.IntuitSub)}");
+
+        return $"{frontendUrl}/auth/callback?{string.Join("&", query)}";
     }
 }

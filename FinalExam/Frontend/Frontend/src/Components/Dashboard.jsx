@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-
-const API_BASE = "http://localhost:5130";
+import { authorizedFetch } from "../auth/api";
+import { clearAuth, getAuth } from "../auth/authStorage";
 
 const Dashboard = () => {
   const location = useLocation();
@@ -16,8 +16,10 @@ const Dashboard = () => {
   const [error, setError] = useState("");
 
   const activeCompanies = companies.filter((company) => company.isActive ?? company.IsActive);
-  const displayName = user?.name || user?.Name || "Intuit User";
-  const displayEmail = user?.email || user?.Email || user?.intuitSub || user?.IntuitSub || "No email available";
+  const storedAuth = getAuth();
+  const displayName = user?.name || user?.Name || storedAuth?.name || "Intuit User";
+  const displayEmail =
+    user?.email || user?.Email || storedAuth?.email || user?.intuitSub || user?.IntuitSub || storedAuth?.intuitSub || "No email available";
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -36,9 +38,8 @@ const Dashboard = () => {
   }, [location.search]);
 
   const loadCompanies = async () => {
-    const res = await fetch(`${API_BASE}/qb/companies`, {
+    const res = await authorizedFetch(`/qb/companies`, {
       method: "GET",
-      credentials: "include",
     });
 
     if (res.status === 401) {
@@ -60,9 +61,8 @@ const Dashboard = () => {
       setError("");
 
       try {
-        const userRes = await fetch(`${API_BASE}/auth/user`, {
+        const userRes = await authorizedFetch(`/auth/user`, {
           method: "GET",
-          credentials: "include",
         });
 
         if (userRes.status === 401) {
@@ -100,24 +100,45 @@ const Dashboard = () => {
   }, [activeCompanies, selectedRealmId]);
 
   const handleConnectQuickBooks = () => {
-    window.location.href = `${API_BASE}/auth/qb/connect`;
+    const startConnect = async () => {
+      setActionLoading(true);
+      setError("");
+
+      try {
+        const res = await authorizedFetch(`/auth/qb/connect-url`, { method: "GET" });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          throw new Error(data.message || "Failed to start QuickBooks connection.");
+        }
+
+        window.location.href = data.url;
+      } catch (e) {
+        setError(e.message || "Failed to start QuickBooks connection.");
+      } finally {
+        setActionLoading(false);
+      }
+    };
+
+    startConnect();
   };
 
   const handleToggleCompany = async (realmId, isActive) => {
     if (!realmId) return;
+
+    if (!isActive) {
+      handleConnectQuickBooks();
+      return;
+    }
 
     setActionLoading(true);
     setError("");
     setStatus("");
 
     try {
-      const endpoint = isActive
-        ? `/qb/companies/${encodeURIComponent(realmId)}/disconnect`
-        : `/qb/companies/${encodeURIComponent(realmId)}/connect`;
+      const endpoint = `/qb/companies/${encodeURIComponent(realmId)}/disconnect`;
 
-      const res = await fetch(`${API_BASE}${endpoint}`, {
+      const res = await authorizedFetch(`${endpoint}`, {
         method: "POST",
-        credentials: "include",
       });
 
       const data = await res.json().catch(() => ({}));
@@ -136,15 +157,7 @@ const Dashboard = () => {
   };
 
   const handleLogout = async () => {
-    try {
-      await fetch(`${API_BASE}/auth/logout`, {
-        method: "POST",
-        credentials: "include",
-      });
-    } catch (e) {
-      console.debug(e);
-    }
-
+    clearAuth();
     navigate("/login");
   };
 
@@ -536,16 +549,16 @@ const Dashboard = () => {
                 <button type="button" className="active">
                   Dashboard
                 </button>
-                <button type="button" disabled>
+                <button type="button" onClick={() => navigate("/account")}>
                   Account
                 </button>
-                <button type="button" disabled>
+                <button type="button" onClick={() => navigate("/customer")}>
                   Customer
                 </button>
-                <button type="button" disabled>
+                <button type="button" onClick={() => navigate("/item")}>
                   Item
                 </button>
-                <button type="button" disabled>
+                <button type="button" onClick={() => navigate("/invoices")}>
                   Invoice
                 </button>
               </div>
@@ -696,7 +709,7 @@ const Dashboard = () => {
                                   onClick={() => handleToggleCompany(realmId, isActive)}
                                   disabled={actionLoading}
                                 >
-                                  {isActive ? "Disconnect" : "Reconnect"}
+                                  {isActive ? "Disconnect" : "Reconnect in QuickBooks"}
                                 </button>
                               </td>
                             </tr>

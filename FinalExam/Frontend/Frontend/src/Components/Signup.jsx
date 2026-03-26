@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
-
-const API_BASE = 'http://localhost:5130';
+import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { API_BASE } from '../auth/api';
 
 const Signup = () => {
+  const location = useLocation();
   const [form, setForm] = useState({ name: '', email: '', password: '', confirm: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const nextError = params.get('error');
+    if (nextError) {
+      setError(nextError);
+    }
+  }, [location.search]);
+
   const handleIntuitSignup = () => {
-    window.location.href = `${API_BASE}/auth/sso/connect`;
+    window.location.href = `${API_BASE}/auth/sso/connect?mode=signup`;
   };
 
   const handleChange = (e) => {
@@ -39,7 +48,6 @@ const Signup = () => {
       const res = await fetch(`${API_BASE}/auth/register`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
         body: JSON.stringify({ name, email, password }),
       });
 

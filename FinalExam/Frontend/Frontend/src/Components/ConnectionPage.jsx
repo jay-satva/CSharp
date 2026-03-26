@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
-
-const API_BASE = "http://localhost:5130";
+import { useLocation, useNavigate } from "react-router-dom";
+import { authorizedFetch } from "../auth/api";
 
 const ConnectionPage = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const params = new URLSearchParams(location.search);
   const status = params.get("status");
   const error = params.get("error");
@@ -17,10 +17,13 @@ const ConnectionPage = () => {
     setLoading(true);
     setLoadError("");
     try {
-      const res = await fetch(`${API_BASE}/qb/companies`, {
+      const res = await authorizedFetch(`/qb/companies`, {
         method: "GET",
-        credentials: "include",
       });
+      if (res.status === 401) {
+        navigate("/login");
+        return;
+      }
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
         throw new Error(data.message || "Failed to load companies.");
@@ -37,20 +40,51 @@ const ConnectionPage = () => {
   useEffect(() => {
     loadCompanies();
     // loadCompanies is stable enough for this component
-  }, []);
+  }, [navigate]);
 
-  const toggleCompany = async (realmId, isActive) => {
+  const startQuickBooksConnect = async () => {
     setLoading(true);
     setLoadError("");
     try {
-      const endpoint = isActive
-        ? `/qb/companies/${encodeURIComponent(realmId)}/disconnect`
-        : `/qb/companies/${encodeURIComponent(realmId)}/connect`;
-
-      const res = await fetch(`${API_BASE}${endpoint}`, {
-        method: "POST",
-        credentials: "include",
+      const res = await authorizedFetch(`/auth/qb/connect-url`, {
+        method: "GET",
       });
+      if (res.status === 401) {
+        navigate("/login");
+        return;
+      }
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to start QuickBooks connection.");
+      }
+
+      window.location.href = data.url;
+    } catch (e) {
+      setLoadError(e.message || "Failed to start QuickBooks connection.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const toggleCompany = async (realmId, isActive) => {
+    if (!isActive) {
+      await startQuickBooksConnect();
+      return;
+    }
+
+    setLoading(true);
+    setLoadError("");
+    try {
+      const endpoint = `/qb/companies/${encodeURIComponent(realmId)}/disconnect`;
+
+      const res = await authorizedFetch(`${endpoint}`, {
+        method: "POST",
+      });
+      if (res.status === 401) {
+        navigate("/login");
+        return;
+      }
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -95,9 +129,9 @@ const ConnectionPage = () => {
             <button
               className="btn btn-outline-primary"
               disabled={loading}
-              onClick={() => (window.location.href = `${API_BASE}/auth/qb/connect`)}
+              onClick={() => window.location.href = "/dashboard"}
             >
-              Connect another company
+              Back to dashboard
             </button>
           </div>
 
@@ -135,7 +169,7 @@ const ConnectionPage = () => {
                               toggleCompany(c.realmId || c.RealmId, c.isActive ?? c.IsActive)
                             }
                           >
-                            {(c.isActive ?? c.IsActive) ? "Disconnect" : "Connect"}
+                            {(c.isActive ?? c.IsActive) ? "Disconnect" : "Reconnect from Dashboard"}
                           </button>
                         </td>
                       </tr>

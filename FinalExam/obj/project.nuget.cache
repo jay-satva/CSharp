@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "Y/IkHDYr0jY=",
+  "dgSpecHash": "l8otXKLbcfc=",
   "success": true,
   "projectFilePath": "C:\\Jay\\CSharp\\FinalExam\\FinalExam.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ASmin\\.nuget\\packages\\bcrypt.net-next\\4.1.0\\bcrypt.net-next.4.1.0.nupkg.sha512",
     "C:\\Users\\ASmin\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
+    "C:\\Users\\ASmin\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\10.0.4\\microsoft.aspnetcore.authentication.jwtbearer.10.0.4.nupkg.sha512",
     "C:\\Users\\ASmin\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.4\\microsoft.aspnetcore.openapi.10.0.4.nupkg.sha512",
     "C:\\Users\\ASmin\\.nuget\\packages\\microsoft.bcl.cryptography\\9.0.13\\microsoft.bcl.cryptography.9.0.13.nupkg.sha512",
     "C:\\Users\\ASmin\\.nuget\\packages\\microsoft.data.sqlclient\\7.0.0\\microsoft.data.sqlclient.7.0.0.nupkg.sha512",
